@@ -12,6 +12,11 @@ namespace Assessment1._1
 {
     public partial class Form1 : Form
     {
+        // next atempt to store the data will be using nested dictionaries
+
+
+
+
 
         List<Meals> MealList = new List<Meals>();
         public Form1()
@@ -21,13 +26,15 @@ namespace Assessment1._1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // initialising a meal with objects
             List<string> recipe = new List<string>{"minced", "spaghetti", "pasata", "cheese"};
             MealList.Add(new Meals("Spaghetti Bolognese", recipe, 2000, false, true, true));
         }
 
         private void generate_meals_btn_Click(object sender, EventArgs e)
         {
-            label1.Text = "meal selected: " + MealList[];
+            // looking at return values 
+            label1.Text = "meal selected: " + MealList;
         }
     }
 }

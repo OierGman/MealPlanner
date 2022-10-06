@@ -8,6 +8,7 @@ namespace Assessment1._1
 {
     class Meals
     {
+        // meals class 
         private string Name;
         private List<string> Ingredients;
         private int Calorie;

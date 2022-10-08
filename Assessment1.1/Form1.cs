@@ -66,6 +66,11 @@ namespace Assessment1._1
 
             mealTableContainer.Controls.Add(mealTimeTableWeek);
 
+            for (int i = 1; i < mealTimeTableWeek.ColumnCount; i++)
+            {
+                mealTimeTableWeek.Controls.Add(new Button() { Text = "Test: "+i, Dock = DockStyle.Fill}, i, 1);
+                mealTimeTableWeek.Controls.Add(new Button() { Text = "Test: "+i, Dock = DockStyle.Fill }, i, 2);
+            }
 
         }
     }

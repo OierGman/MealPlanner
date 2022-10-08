@@ -68,8 +68,22 @@ namespace Assessment1._1
 
             for (int i = 1; i < mealTimeTableWeek.ColumnCount; i++)
             {
-                mealTimeTableWeek.Controls.Add(new Button() { Text = "Test: "+i, Dock = DockStyle.Fill}, i, 1);
-                mealTimeTableWeek.Controls.Add(new Button() { Text = "Test: "+i, Dock = DockStyle.Fill }, i, 2);
+                mealTimeTableWeek.Controls.Add(new Button()
+                {
+                    Text = "Test: "+i, 
+                    Dock = DockStyle.Fill, 
+                    FlatStyle = FlatStyle.Flat, 
+                    BackColor = Color.Transparent, 
+                    FlatAppearance = { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green}
+                }, i, 1);
+                mealTimeTableWeek.Controls.Add(new Button()
+                {
+                    Text = "Test: " + i, 
+                    Dock = DockStyle.Fill, 
+                    FlatStyle = FlatStyle.Flat, 
+                    BackColor = Color.Transparent, 
+                    FlatAppearance = { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green}
+                }, i, 2);
             }
 
         }

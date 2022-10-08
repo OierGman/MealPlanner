@@ -27,14 +27,14 @@ namespace Assessment1._1
         private void Form1_Load(object sender, EventArgs e)
         {
             // initialising a meal with objects
-            List<string> recipe = new List<string>{"minced", "spaghetti", "pasata", "cheese"};
-            MealList.Add(new Meals("Spaghetti Bolognese", recipe, 2000, false, true, true));
+            List<string> recipeSB = new List<string>{"minced", "spaghetti", "pasata", "cheese"};
+            MealList.Add(new Meals("Spaghetti Bolognese", recipeSB, 2000, false, true, true));
         }
 
         private void generate_meals_btn_Click(object sender, EventArgs e)
         {
             // looking at return values 
-            label1.Text = "meal selected: " + MealList;
+            label1.Text = "meal selected: " + MealList[0].ingredient[0];
         }
     }
 }

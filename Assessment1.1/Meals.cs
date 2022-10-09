@@ -13,6 +13,7 @@ namespace Assessment1._1
         private List<string> Ingredients;
         private int Calorie;
         private bool IsVegan;
+        private bool VeganAlternative;
         private bool IsLunch;
         private bool IsDinner;
 
@@ -60,6 +61,12 @@ namespace Assessment1._1
         {
             get { return IsDinner; }
             set { IsDinner = value; }
+        }
+
+        public bool veganAlternative
+        {
+            get { return VeganAlternative; }
+            set { VeganAlternative = value; }
         }
     }
 }

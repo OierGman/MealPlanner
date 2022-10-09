@@ -89,15 +89,12 @@ namespace Assessment1._1
 
                 }
             }
-            // use this function to deteermine weather a meal is lunch/dinner/vegan. change bool attribute in if statement
+            // use this function to determine whether a meal is lunch/dinner/vegan. change bool attribute in if statement
 
-        }
-
-        // Plan my meals button click event
-        private void generate_meals_btn_Click(object sender, EventArgs e)
-        {
+            // Removes plan meals button, generates ui
             Controls.Remove(generate_meals_btn);
             GenerateUi();
+
         }
         // Generates the user interface 
         private void GenerateUi()
@@ -133,14 +130,19 @@ namespace Assessment1._1
             mealTimeTableWeek.Controls.Add(new Label() { Text = "Sunday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 7, 0);
             mealTimeTableWeek.Controls.Add(new Label() { Text = "Lunch", TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill }, 0, 1);
             mealTimeTableWeek.Controls.Add(new Label() { Text = "Dinner", TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill }, 0, 2);
-
+            // add meal timetable to container
             mealTableContainer.Controls.Add(mealTimeTableWeek);
-
+            // creates a meal button for every cell in the mealTimeTableWeek
             for (int i = 1; i < mealTimeTableWeek.ColumnCount; i++)
             {
+                // gets meal object, accesses property and value using reflection
+                object mealName = GetMeal();
+                var mealPropertyInfo = mealName.GetType().GetProperty("name");
+                string mealValueName = (string)mealPropertyInfo.GetValue(mealName);
+
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    Text = "Test: " + i, 
+                    Text = mealValueName,
                     TextAlign = ContentAlignment.TopCenter,
                     Dock = DockStyle.Fill, 
                     FlatStyle = FlatStyle.Flat, 
@@ -148,9 +150,13 @@ namespace Assessment1._1
                     FlatAppearance = { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green}
                 }, i, 1);
 
+                mealName = GetMeal();
+                mealPropertyInfo = mealName.GetType().GetProperty("name");
+                mealValueName = (string)mealPropertyInfo.GetValue(mealName);
+
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    Text = "Test: " + i,
+                    Text = mealValueName,
                     TextAlign = ContentAlignment.TopCenter,
                     Dock = DockStyle.Fill, 
                     FlatStyle = FlatStyle.Flat, 
@@ -170,6 +176,13 @@ namespace Assessment1._1
             //test works
             ((Button)sender).Text = "X";
             //GetMealData()
+        }
+        // gets a random meal
+        private object GetMeal()
+        {
+            var random = new Random();
+            var mealIndex = random.Next(MealList.Count);
+            return MealList[mealIndex];
         }
     }
 }

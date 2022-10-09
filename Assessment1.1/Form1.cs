@@ -54,15 +54,15 @@ namespace Assessment1._1
             mealTimeTableWeek.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
             mealTimeTableWeek.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
             // Populating columns/rows
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Monday" }, 1, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Tuesday" }, 2, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Wednesday" }, 3, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Thursday" }, 4, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Friday" }, 5, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Saturday" }, 6, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Sunday" }, 7, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Lunch" }, 0, 1);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Dinner" }, 0, 2);
+            mealTimeTableWeek.Controls.Add(new Label() { Text = "Monday", TextAlign  = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill}, 1, 0);
+            mealTimeTableWeek.Controls.Add(new Label() { Text = "Tuesday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 2, 0);
+            mealTimeTableWeek.Controls.Add(new Label() { Text = "Wednesday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 3, 0);
+            mealTimeTableWeek.Controls.Add(new Label() { Text = "Thursday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 4, 0);
+            mealTimeTableWeek.Controls.Add(new Label() { Text = "Friday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 5, 0);
+            mealTimeTableWeek.Controls.Add(new Label() { Text = "Saturday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 6, 0);
+            mealTimeTableWeek.Controls.Add(new Label() { Text = "Sunday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 7, 0);
+            mealTimeTableWeek.Controls.Add(new Label() { Text = "Lunch", TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill }, 0, 1);
+            mealTimeTableWeek.Controls.Add(new Label() { Text = "Dinner", TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill }, 0, 2);
 
             mealTableContainer.Controls.Add(mealTimeTableWeek);
 
@@ -70,22 +70,36 @@ namespace Assessment1._1
             {
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    Text = "Test: "+i, 
+                    Text = "Test: " + i, 
+                    TextAlign = ContentAlignment.TopCenter,
                     Dock = DockStyle.Fill, 
                     FlatStyle = FlatStyle.Flat, 
                     BackColor = Color.Transparent, 
                     FlatAppearance = { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green}
                 }, i, 1);
+
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    Text = "Test: " + i, 
+                    Text = "Test: " + i,
+                    TextAlign = ContentAlignment.TopCenter,
                     Dock = DockStyle.Fill, 
                     FlatStyle = FlatStyle.Flat, 
                     BackColor = Color.Transparent, 
                     FlatAppearance = { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green}
                 }, i, 2);
             }
-
+            // adds a click event for all meals buttons of mealTimeTableWeek
+            foreach (var button in mealTimeTableWeek.Controls.OfType<Button>())
+            {
+                button.Click += button_Click;
+            }
+        }
+        // event handler that accesses meal information
+        private void button_Click(object sender, EventArgs e)
+        {
+            //test works
+            ((Button)sender).Text = "X";
+            //GetMealData()
         }
     }
 }

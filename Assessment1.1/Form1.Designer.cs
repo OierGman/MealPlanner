@@ -35,6 +35,7 @@ namespace Assessment1._1
             // 
             // generate_meals_btn
             // 
+            this.generate_meals_btn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.generate_meals_btn.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.generate_meals_btn.Location = new System.Drawing.Point(338, 272);
             this.generate_meals_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

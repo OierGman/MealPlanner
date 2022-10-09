@@ -84,7 +84,7 @@ namespace Assessment1._1
                 if (MealList[number.Next(MealList.Count)].isLunch == true ) // for dinner meals change to false
                 {
                     // label 1 doesnt exist ( change to element in form )
-                    label1.Text = MealList[number.Next(MealList.Count)].name;
+                    // label1.Text = MealList[number.Next(MealList.Count)].name;
 
                 }
             }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -133,36 +134,46 @@ namespace Assessment1._1
             // add meal timetable to container
             mealTableContainer.Controls.Add(mealTimeTableWeek);
             // creates a meal button for every cell in the mealTimeTableWeek
-            for (int i = 1; i < mealTimeTableWeek.ColumnCount; i++)
+            for (int i = 1; i < 7; i++)
             {
                 // gets meal object, accesses property and value using reflection
-                object mealName = GetMeal();
-                var mealPropertyInfo = mealName.GetType().GetProperty("name");
-                string mealValueName = (string)mealPropertyInfo.GetValue(mealName);
+                object meal = GetMeal();
+                // access property name
+                var mealPropertyName = meal.GetType().GetProperty("name");
+                var mealValueName = mealPropertyName.GetValue(meal);
+                // access property isLunch
+                var mealPropertyLunch = meal.GetType().GetProperty("isLunch");
+                var mealValueLunch = mealPropertyLunch.GetValue(meal);
+                // access property isDinner
+                var mealPropertyDinner = meal.GetType().GetProperty("isDinner");
+                var mealValueDinner = mealPropertyLunch.GetValue(meal);
 
-                mealTimeTableWeek.Controls.Add(new Button()
+                if ((bool)mealValueLunch)
                 {
-                    Text = mealValueName,
-                    TextAlign = ContentAlignment.TopCenter,
-                    Dock = DockStyle.Fill, 
-                    FlatStyle = FlatStyle.Flat, 
-                    BackColor = Color.Transparent, 
-                    FlatAppearance = { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green}
-                }, i, 1);
-
-                mealName = GetMeal();
-                mealPropertyInfo = mealName.GetType().GetProperty("name");
-                mealValueName = (string)mealPropertyInfo.GetValue(mealName);
-
-                mealTimeTableWeek.Controls.Add(new Button()
+                    mealTimeTableWeek.Controls.Add(new Button()
+                    {
+                        Text = (string)mealValueName,
+                        TextAlign = ContentAlignment.TopCenter,
+                        Dock = DockStyle.Fill,
+                        FlatStyle = FlatStyle.Flat,
+                        BackColor = Color.Transparent,
+                        FlatAppearance =
+                            { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+                    }, i, 1);
+                }
+                if((bool)mealValueDinner)
                 {
-                    Text = mealValueName,
-                    TextAlign = ContentAlignment.TopCenter,
-                    Dock = DockStyle.Fill, 
-                    FlatStyle = FlatStyle.Flat, 
-                    BackColor = Color.Transparent, 
-                    FlatAppearance = { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green}
-                }, i, 2);
+                    mealTimeTableWeek.Controls.Add(new Button()
+                    {
+                        Text = (string)mealValueName,
+                        TextAlign = ContentAlignment.TopCenter,
+                        Dock = DockStyle.Fill,
+                        FlatStyle = FlatStyle.Flat,
+                        BackColor = Color.Transparent,
+                        FlatAppearance =
+                            { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+                    }, i, 2);
+                }
             }
             // adds a click event for all meals buttons of mealTimeTableWeek
             foreach (var button in mealTimeTableWeek.Controls.OfType<Button>())

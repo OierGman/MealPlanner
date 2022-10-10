@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace Assessment1._1
 {
+
     static class Program
     {
         /// <summary>

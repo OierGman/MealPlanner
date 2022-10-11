@@ -31,6 +31,7 @@ namespace Assessment1._1
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.generate_meals_btn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // generate_meals_btn
@@ -46,6 +47,17 @@ namespace Assessment1._1
             this.generate_meals_btn.UseVisualStyleBackColor = true;
             this.generate_meals_btn.Click += new System.EventHandler(this.generate_meals_btn_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(753, 535);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(92, 29);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Add Meal";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -53,6 +65,7 @@ namespace Assessment1._1
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(914, 600);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.generate_meals_btn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -66,6 +79,7 @@ namespace Assessment1._1
         #endregion
 
         private System.Windows.Forms.Button generate_meals_btn;
+        private System.Windows.Forms.Button button1;
     }
 }
 

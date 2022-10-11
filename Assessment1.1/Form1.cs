@@ -202,31 +202,31 @@ namespace Assessment1._1
             // creates a meal button for every cell in the mealTimeTableWeek
 
 
-                for (int i = 1; i <= 7; i++)
+            for (int i = 1; i <= 7; i++)
+            {
+                int mealLunch = GetLunch(vegan);
+                mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    int mealLunch = GetLunch(vegan);
-                    mealTimeTableWeek.Controls.Add(new Button()
-                    {
-                        Text = MealList[mealLunch].name,
-                        TextAlign = ContentAlignment.TopCenter,
-                        Dock = DockStyle.Fill,
-                        FlatStyle = FlatStyle.Flat,
-                        BackColor = Color.Transparent,
-                        FlatAppearance =
-                        { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-                    }, i, 1);
-                    int mealDinner = GetDinner(vegan);
-                    mealTimeTableWeek.Controls.Add(new Button()
-                    {
-                        Text = MealList[mealDinner].name,
-                        TextAlign = ContentAlignment.TopCenter,
-                        Dock = DockStyle.Fill,
-                        FlatStyle = FlatStyle.Flat,
-                        BackColor = Color.Transparent,
-                        FlatAppearance =
-                        { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-                    }, i, 2);
-                }
+                    Text = MealList[mealLunch].name,
+                    TextAlign = ContentAlignment.TopCenter,
+                    Dock = DockStyle.Fill,
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = Color.Transparent,
+                    FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+                }, i, 1);
+                int mealDinner = GetDinner(vegan);
+                mealTimeTableWeek.Controls.Add(new Button()
+                {
+                    Text = MealList[mealDinner].name,
+                    TextAlign = ContentAlignment.TopCenter,
+                    Dock = DockStyle.Fill,
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = Color.Transparent,
+                    FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+                }, i, 2);
+            }
             
 
             // adds a click event for all meals buttons of mealTimeTableWeek

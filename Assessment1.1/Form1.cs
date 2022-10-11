@@ -14,6 +14,7 @@ namespace Assessment1._1
 {
     public partial class Form1 : Form
     {
+        // add recipe list here
 
         List<Meals> MealList = new List<Meals>();
 
@@ -246,6 +247,7 @@ namespace Assessment1._1
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
                     Text = MealList[mealLunch].name,
+                    // extract ingredient list
                     TextAlign = ContentAlignment.TopCenter,
                     Dock = DockStyle.Fill,
                     FlatStyle = FlatStyle.Flat,
@@ -257,6 +259,7 @@ namespace Assessment1._1
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
                     Text = MealList[mealDinner].name,
+                    // extract ingredient list
                     TextAlign = ContentAlignment.TopCenter,
                     Dock = DockStyle.Fill,
                     FlatStyle = FlatStyle.Flat,

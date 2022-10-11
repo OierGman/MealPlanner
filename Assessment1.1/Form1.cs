@@ -211,7 +211,7 @@ namespace Assessment1._1
             mealSidePanel.Controls.Add(new Label()
             {
                 Text = "MEAL NAME",
-                TextAlign = ContentAlignment.TopCenter,
+                TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.Transparent,
@@ -236,31 +236,53 @@ namespace Assessment1._1
             mealSidePanelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             mealSidePanelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 
-            Button veganMeals = new Button()
+            Button veganMealsButton = new Button()
             {
                 Text = "Vegan Meals Only",
-                TextAlign = ContentAlignment.TopCenter,
+                TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.Transparent,
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
-            mealSidePanelButtons.Controls.Add(veganMeals);
+            mealSidePanelButtons.Controls.Add(veganMealsButton);
 
-            Button exportRecipe = new Button()
+            Button exportRecipeButton = new Button()
             {
                 Text = "Export Recipe",
-                TextAlign = ContentAlignment.TopCenter,
+                TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.Transparent,
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
-            mealSidePanelButtons.Controls.Add(exportRecipe);
+            mealSidePanelButtons.Controls.Add(exportRecipeButton);
 
+            Button coreIngredientsButton = new Button()
+            {
+                Text = "Core Ingredients Filter",
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Transparent,
+                FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            };
+            mealSidePanelButtons.Controls.Add(coreIngredientsButton);
 
+            Button extraButton = new Button()
+            {
+                Text = "Extra Button",
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Transparent,
+                FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            };
+            mealSidePanelButtons.Controls.Add(extraButton);
 
             // creates a meal button for every cell in the mealTimeTableWeek
 

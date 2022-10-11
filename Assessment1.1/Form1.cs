@@ -247,6 +247,7 @@ namespace Assessment1._1
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
             mealSidePanelButtons.Controls.Add(veganMealsButton);
+            veganMealsButton.Click += veganMealsButton_Click;
 
             Button exportRecipeButton = new Button()
             {
@@ -259,6 +260,7 @@ namespace Assessment1._1
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
             mealSidePanelButtons.Controls.Add(exportRecipeButton);
+            exportRecipeButton.Click += exportRecipeButton_Click;
 
             Button coreIngredientsButton = new Button()
             {
@@ -271,8 +273,9 @@ namespace Assessment1._1
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
             mealSidePanelButtons.Controls.Add(coreIngredientsButton);
+            coreIngredientsButton.Click += coreIngredientsButton_Click;
 
-            Button extraButton = new Button()
+            Button addMeals = new Button()
             {
                 Text = "Extra Button",
                 TextAlign = ContentAlignment.MiddleCenter,
@@ -282,7 +285,8 @@ namespace Assessment1._1
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
-            mealSidePanelButtons.Controls.Add(extraButton);
+            mealSidePanelButtons.Controls.Add(addMeals);
+            addMeals.Click += addMeals_Click;
 
             // creates a meal button for every cell in the mealTimeTableWeek
 
@@ -320,12 +324,19 @@ namespace Assessment1._1
             }
         }
 
-        // event handler that accesses meal information
-        private void button_Click(object sender, EventArgs e)
+        private void veganMealsButton_Click(object sender, EventArgs e)
         {
-            //test works
-            ((Button)sender).Text = "X";
-            //GetMealData()
+            
+        }
+
+        private void exportRecipeButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void coreIngredientsButton_Click(object sender, EventArgs e)
+        {
+            
         }
 
         // checks if a meal is a meal
@@ -355,7 +366,15 @@ namespace Assessment1._1
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        // event handler that accesses meal information
+        private void button_Click(object sender, EventArgs e)
+        {
+            //test works
+            ((Button)sender).Text = "X";
+            //GetMealData()
+        }
+        // addMeals button click event handler
+        private void addMeals_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
             form2.ShowDialog();

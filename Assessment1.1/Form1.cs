@@ -72,6 +72,52 @@ namespace Assessment1._1
             List<string> GreenBeanSaladRecipe = new List<string> { "Green Beans", "Garlic", "Mint" };
             MealList.Add(new Meals("Green Bean Salad", GreenBeanSaladRecipe, 79, true, true, false));
 
+            List<string> TomatoBasilSoupRecipe = new List<string> { "tomato", "turkey", "basil", "garlic" };
+
+            MealList.Add(new Meals("Tomato & Basil Soup", TomatoBasilSoupRecipe, 213, false, true, true));
+
+            List<string> ChickenPastaBakeRecipe = new List<string> { "tomato", "chicken", "mozzarella", "garlic", "oil" };
+
+            MealList.Add(new Meals("Chicken Pasta Bake", ChickenPastaBakeRecipe, 575, false, true, true));
+
+            List<string> ChickenChorizoRaguRecipe = new List<string> { "tomato", "chicken", "chorizo", "onion", "potatoes" };
+            MealList.Add(new Meals("Chicken & Chorizo Ragu", ChickenChorizoRaguRecipe, 383, false, true, true));
+
+            List<string> VegetarianLasagneRecipe = new List<string> { "lasagnaSheets", "tomatoes", "basil", "carrot", "onion" };
+            MealList.Add(new Meals("Vegetarian Lasagne", VegetarianLasagneRecipe, 461, true, true, true));
+
+            List<string> MeatBallTomatoSoupRecipe = new List<string> { "tomato", "meatballs", "peppers", "onion", "couscous" };
+            MealList.Add(new Meals("Meat & Ball Tomato Soup", MeatBallTomatoSoupRecipe, 330, false, true, true));
+
+            List<string> BroccoliPPPastaRecipe = new List<string> { "broccoli", "pasta", "basil", "tomatoes", "garlic" };
+            MealList.Add(new Meals("Broccoli Pesto & Pancetta Pasta", BroccoliPPPastaRecipe, 452, true, true, true));
+
+            List<string> HealthyChickenKCRecipe = new List<string> { "chicken", "currry powder", "tumeric", "rice" };
+            MealList.Add(new Meals("Healthy Chicken Katsu Curry", HealthyChickenKCRecipe, 585, false, true, true));
+
+            List<string> SpicedLambWrapsRecipe = new List<string> { "lamb", "tomatoes", "potatoes", "peas" };
+            MealList.Add(new Meals("Spiced Lamb Wraps", SpicedLambWrapsRecipe, 576, false, true, true));
+
+            List<string> EasyChickenFajitasRecipe = new List<string> { "chicken", "salad", "tortillas", "pepper" };
+            MealList.Add(new Meals("Easy Chicken Fajitas", EasyChickenFajitasRecipe, 723, false, true, true));
+
+            List<string> ChorizoCPPastaRecipe = new List<string> { "chorizo", "penne", "basil", "pepper" };
+            MealList.Add(new Meals("Chorizo & Chilli Pepper Pasta", ChorizoCPPastaRecipe, 684, true, true, true));
+
+            List<string> TomatoMascarponeRisottoRecipe = new List<string> { "mascarpone ", "tomatoes", "rice", "basil" };
+            MealList.Add(new Meals("Tomato & Mascarpone Risotto", TomatoMascarponeRisottoRecipe, 635, true, true, true));
+
+            List<string> PorkNoddleStirFryRecipe = new List<string> { "mince-pork", "egg", "sweetcorn", "carrot" };
+            MealList.Add(new Meals("Pork Noddle Stir Fry", PorkNoddleStirFryRecipe, 599, false, true, true));
+
+            List<string> ChorizoMGBakeRecipe = new List<string> { "Chorizo", "tomatoes", "gnocchi", "mozarella" };
+            MealList.Add(new Meals("Chorizo & mozzarella gnocchi bake", ChorizoMGBakeRecipe, 318, true, true, true));
+
+            List<string> BreakfastSmoothieRecipe = new List<string> { "banana", "raspberries", "blueberries", "strawberries" };
+            MealList.Add(new Meals("Breakfast Soothie", BreakfastSmoothieRecipe, 124, true, false, false));
+
+            List<string> BreakfastMuffinsRecipe = new List<string> { "banana", "seeds", "blueberries", "flour" };
+            MealList.Add(new Meals("Breakfast Muffins", BreakfastMuffinsRecipe, 179, true, false, false));
             #endregion
         }
 
@@ -90,19 +136,17 @@ namespace Assessment1._1
                 {
                     // label 1 doesnt exist ( change to element in form )
                     // label1.Text = MealList[number.Next(MealList.Count)].name;
-
                 }
             }
             // use this function to determine whether a meal is lunch/dinner/vegan. change bool attribute in if statement
 
             // Removes plan meals button, generates ui
             Controls.Remove(generate_meals_btn);
-            GenerateUi();
-
+            GenerateUi(false);
         }
 
         // Generates the user interface 
-        public void GenerateUi()
+        public void GenerateUi(bool vegan)
         {
             TableLayoutPanel mealTableContainer = new TableLayoutPanel();
             this.Controls.Add(mealTableContainer);
@@ -191,32 +235,36 @@ namespace Assessment1._1
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             },0,2);
 
+
             // creates a meal button for every cell in the mealTimeTableWeek
-            for (int i = 1; i <= 7; i++)
-            {
-                int mealLunch = GetLunch();
-                mealTimeTableWeek.Controls.Add(new Button()
+
+
+                for (int i = 1; i <= 7; i++)
                 {
-                    Text = MealList[mealLunch].name,
-                    TextAlign = ContentAlignment.TopCenter,
-                    Dock = DockStyle.Fill,
-                    FlatStyle = FlatStyle.Flat,
-                    BackColor = Color.Transparent,
-                    FlatAppearance =
+                    int mealLunch = GetLunch(vegan);
+                    mealTimeTableWeek.Controls.Add(new Button()
+                    {
+                        Text = MealList[mealLunch].name,
+                        TextAlign = ContentAlignment.TopCenter,
+                        Dock = DockStyle.Fill,
+                        FlatStyle = FlatStyle.Flat,
+                        BackColor = Color.Transparent,
+                        FlatAppearance =
                         { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-                }, i, 1);
-                int mealDinner = GetDinner();
-                mealTimeTableWeek.Controls.Add(new Button()
-                {
-                    Text = MealList[mealDinner].name,
-                    TextAlign = ContentAlignment.TopCenter,
-                    Dock = DockStyle.Fill,
-                    FlatStyle = FlatStyle.Flat,
-                    BackColor = Color.Transparent,
-                    FlatAppearance =
+                    }, i, 1);
+                    int mealDinner = GetDinner(vegan);
+                    mealTimeTableWeek.Controls.Add(new Button()
+                    {
+                        Text = MealList[mealDinner].name,
+                        TextAlign = ContentAlignment.TopCenter,
+                        Dock = DockStyle.Fill,
+                        FlatStyle = FlatStyle.Flat,
+                        BackColor = Color.Transparent,
+                        FlatAppearance =
                         { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-                }, i, 2);
-            }
+                    }, i, 2);
+                }
+            
 
             // adds a click event for all meals buttons of mealTimeTableWeek
             foreach (var button in mealTimeTableWeek.Controls.OfType<Button>())
@@ -229,18 +277,20 @@ namespace Assessment1._1
         private void button_Click(object sender, EventArgs e)
         {
             //test works
-            ((Button)sender).Text = "X";
+            // ((Button)sender).Text = ;
             //GetMealData()
         }
 
         // checks if a meal is a meal
         public int GetLunch()
+        // gets a random meal
+        public int GetLunch(bool vegan)
         {
             while (true)
             {
                 var random = new Random();
                 var mealIndex = random.Next(MealList.Count);
-                if (MealList[mealIndex].isLunch == true)
+                if (MealList[mealIndex].isLunch == true && MealList[mealIndex].isVegan == vegan)
                 {
                     return mealIndex;
                 }
@@ -248,12 +298,13 @@ namespace Assessment1._1
         }
         // checks if a meal is a dinner
         public int GetDinner()
+        public int GetDinner(bool vegan)
         {
             while (true)
             {
                 var random = new Random();
                 var mealIndex = random.Next(MealList.Count);
-                if (MealList[mealIndex].isDinner == true)
+                if (MealList[mealIndex].isDinner == true && MealList[mealIndex].isVegan == vegan)
                 {
                     return mealIndex;
                 }
@@ -263,8 +314,7 @@ namespace Assessment1._1
         private void button1_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
-            form2.ShowDialog();
-            
+            form2.ShowDialog(); 
         }
     }
 }

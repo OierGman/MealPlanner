@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Assessment1._1
@@ -208,63 +202,94 @@ namespace Assessment1._1
                 Dock = DockStyle.Fill,
                 RowCount = 3
             };
-            mealSidePanel.RowStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            mealSidePanel.RowStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-            mealSidePanel.RowStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-
+            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            // adds side panel to container
             mealTableContainer.Controls.Add(mealSidePanel);
-
-            mealSidePanel.Controls.Add(new Button()
+            // adds meal label
+            mealSidePanel.Controls.Add(new Label()
             {
-                Text = "HI",
+                Text = "MEAL NAME",
                 TextAlign = ContentAlignment.TopCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.Transparent,
-                FlatAppearance =
-                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            }, 0, 0);
+            mealSidePanel.Controls.Add(new TextBox()
+            {
+                Text = "MEAL RECIPE",
+                Dock = DockStyle.Fill,
+                Multiline = true,
             }, 0, 1);
-            mealSidePanel.Controls.Add(new Button()
+            TableLayoutPanel mealSidePanelButtons = new TableLayoutPanel()
             {
-                Text = "hi",
+                RowCount = 2,
+                ColumnCount = 2,
+                Dock = DockStyle.Fill
+            };
+            mealSidePanel.Controls.Add(mealSidePanelButtons);
+
+            mealSidePanelButtons.RowStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            mealSidePanelButtons.RowStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+
+            mealSidePanelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            mealSidePanelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+
+            Button veganMeals = new Button()
+            {
+                Text = "Vegan Meals Only",
                 TextAlign = ContentAlignment.TopCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.Transparent,
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-            },0,2);
+            };
+            mealSidePanelButtons.Controls.Add(veganMeals);
+
+            Button exportRecipe = new Button()
+            {
+                Text = "Export Recipe",
+                TextAlign = ContentAlignment.TopCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Transparent,
+                FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            };
+            mealSidePanelButtons.Controls.Add(exportRecipe);
+
 
 
             // creates a meal button for every cell in the mealTimeTableWeek
 
-
-                for (int i = 1; i <= 7; i++)
+            for (int i = 1; i <= 7; i++)
+            {
+                int mealLunch = GetLunch(vegan);
+                mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    int mealLunch = GetLunch(vegan);
-                    mealTimeTableWeek.Controls.Add(new Button()
-                    {
-                        Text = MealList[mealLunch].name,
-                        TextAlign = ContentAlignment.TopCenter,
-                        Dock = DockStyle.Fill,
-                        FlatStyle = FlatStyle.Flat,
-                        BackColor = Color.Transparent,
-                        FlatAppearance =
+                    Text = MealList[mealLunch].name,
+                    TextAlign = ContentAlignment.TopCenter,
+                    Dock = DockStyle.Fill,
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = Color.Transparent,
+                    FlatAppearance =
                         { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-                    }, i, 1);
-                    int mealDinner = GetDinner(vegan);
-                    mealTimeTableWeek.Controls.Add(new Button()
-                    {
-                        Text = MealList[mealDinner].name,
-                        TextAlign = ContentAlignment.TopCenter,
-                        Dock = DockStyle.Fill,
-                        FlatStyle = FlatStyle.Flat,
-                        BackColor = Color.Transparent,
-                        FlatAppearance =
+                }, i, 1);
+                int mealDinner = GetDinner(vegan);
+                mealTimeTableWeek.Controls.Add(new Button()
+                {
+                    Text = MealList[mealDinner].name,
+                    TextAlign = ContentAlignment.TopCenter,
+                    Dock = DockStyle.Fill,
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = Color.Transparent,
+                    FlatAppearance =
                         { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-                    }, i, 2);
-                }
-            
+                }, i, 2);
+            }
+
 
             // adds a click event for all meals buttons of mealTimeTableWeek
             foreach (var button in mealTimeTableWeek.Controls.OfType<Button>())
@@ -277,7 +302,7 @@ namespace Assessment1._1
         private void button_Click(object sender, EventArgs e)
         {
             //test works
-             ((Button)sender).Text = "X";
+            ((Button)sender).Text = "X";
             //GetMealData()
         }
 
@@ -311,7 +336,7 @@ namespace Assessment1._1
         private void button1_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
-            form2.ShowDialog(); 
+            form2.ShowDialog();
         }
     }
 }

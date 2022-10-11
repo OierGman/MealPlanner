@@ -148,9 +148,12 @@ namespace Assessment1._1
         // Generates the user interface 
         public void GenerateUi(bool vegan)
         {
-            Panel mealTableContainer = new Panel();
+            TableLayoutPanel mealTableContainer = new TableLayoutPanel();
             this.Controls.Add(mealTableContainer);
             mealTableContainer.Dock = DockStyle.Fill;
+            mealTableContainer.ColumnCount = 2;
+            mealTableContainer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
+            mealTableContainer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
 
             TableLayoutPanel mealTimeTableWeek = new TableLayoutPanel();
             mealTimeTableWeek.ColumnCount = 8;
@@ -199,6 +202,40 @@ namespace Assessment1._1
             // add meal timetable to container
             mealTableContainer.Controls.Add(mealTimeTableWeek);
 
+            // Meal Table Side Panel
+            TableLayoutPanel mealSidePanel = new TableLayoutPanel()
+            {
+                Dock = DockStyle.Fill,
+                RowCount = 3
+            };
+            mealSidePanel.RowStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            mealSidePanel.RowStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            mealSidePanel.RowStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+
+            mealTableContainer.Controls.Add(mealSidePanel);
+
+            mealSidePanel.Controls.Add(new Button()
+            {
+                Text = "HI",
+                TextAlign = ContentAlignment.TopCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Transparent,
+                FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            }, 0, 1);
+            mealSidePanel.Controls.Add(new Button()
+            {
+                Text = "hi",
+                TextAlign = ContentAlignment.TopCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Transparent,
+                FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            },0,2);
+
+
             // creates a meal button for every cell in the mealTimeTableWeek
 
 
@@ -240,11 +277,11 @@ namespace Assessment1._1
         private void button_Click(object sender, EventArgs e)
         {
             //test works
-            // ((Button)sender).Text = ;
+             ((Button)sender).Text = "X";
             //GetMealData()
         }
 
-        // gets a random meal
+        // checks if a meal is a meal
         public int GetLunch(bool vegan)
         {
             while (true)
@@ -257,6 +294,7 @@ namespace Assessment1._1
                 }
             }
         }
+        // checks if a meal is a dinner
         public int GetDinner(bool vegan)
         {
             while (true)

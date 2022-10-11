@@ -17,6 +17,7 @@ namespace Assessment1._1
         // add recipe list here
 
         List<Meals> MealList = new List<Meals>();
+        List<string> weeksMeals = new List<string>();
 
         public Form1()
         {
@@ -285,7 +286,7 @@ namespace Assessment1._1
             //GetMealData()
         }
 
-        // checks if a meal is a meal
+        // checks if a meal is a meal, appends ingredients to a list for further use
         public int GetLunch(bool vegan)
         {
             while (true)
@@ -294,11 +295,15 @@ namespace Assessment1._1
                 var mealIndex = random.Next(MealList.Count);
                 if (MealList[mealIndex].isLunch == true && MealList[mealIndex].isVegan == vegan)
                 {
+                    foreach (var x in MealList[mealIndex].ingredient)
+                    {
+                        weeksMeals.Add(x);
+                    }
                     return mealIndex;
                 }
             }
         }
-        // checks if a meal is a dinner
+        // checks if a meal is a dinner, appends ingredients to a list for further use
         public int GetDinner(bool vegan)
         {
             while (true)
@@ -307,6 +312,10 @@ namespace Assessment1._1
                 var mealIndex = random.Next(MealList.Count);
                 if (MealList[mealIndex].isDinner == true && MealList[mealIndex].isVegan == vegan)
                 {
+                    foreach (var x in MealList[mealIndex].ingredient)
+                    {
+                        weeksMeals.Add(x);
+                    }
                     return mealIndex;
                 }
             }

@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Assessment1._1
@@ -27,11 +21,11 @@ namespace Assessment1._1
         }
 
         private void button1_Click(object sender, EventArgs e)
-        { 
-            MealList.Add(new Meals(MealName,CoreIngridients,Calories,Vegan,Lunch,Dinner));
+        {
+            MealList.Add(new Meals(MealName, CoreIngridients, Calories, Vegan, Lunch, Dinner));
             this.Close();
-        
-           
+
+
 
 
         }
@@ -79,7 +73,7 @@ namespace Assessment1._1
 
         private void IngridientsTxtBox_TextChanged(object sender, EventArgs e, string ingridients)
         {
-            CoreIngridients = new List<string> {IngridientsTxtBox.Text};
+            CoreIngridients = new List<string> { IngridientsTxtBox.Text };
         }
 
         private void button2_Click(object sender, EventArgs e)

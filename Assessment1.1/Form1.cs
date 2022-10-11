@@ -156,7 +156,7 @@ namespace Assessment1._1
             // creates a meal button for every cell in the mealTimeTableWeek
             for (int i = 1; i <= 7; i++)
             {
-                int mealLunch = GetMeal();
+                int mealLunch = GetLunch();
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
                     Text = MealList[mealLunch].name,
@@ -196,7 +196,7 @@ namespace Assessment1._1
         }
 
         // gets a random meal
-        public int GetMeal()
+        public int GetLunch()
         {
             while (true)
             {

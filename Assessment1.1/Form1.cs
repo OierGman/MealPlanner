@@ -14,7 +14,6 @@ namespace Assessment1._1
 {
     public partial class Form1 : Form
     {
-
         List<Meals> MealList = new List<Meals>();
 
         public Form1()
@@ -73,11 +72,9 @@ namespace Assessment1._1
             MealList.Add(new Meals("Green Bean Salad", GreenBeanSaladRecipe, 79, true, true, false));
 
             List<string> TomatoBasilSoupRecipe = new List<string> { "tomato", "turkey", "basil", "garlic" };
-
             MealList.Add(new Meals("Tomato & Basil Soup", TomatoBasilSoupRecipe, 213, false, true, true));
 
             List<string> ChickenPastaBakeRecipe = new List<string> { "tomato", "chicken", "mozzarella", "garlic", "oil" };
-
             MealList.Add(new Meals("Chicken Pasta Bake", ChickenPastaBakeRecipe, 575, false, true, true));
 
             List<string> ChickenChorizoRaguRecipe = new List<string> { "tomato", "chicken", "chorizo", "onion", "potatoes" };
@@ -124,24 +121,6 @@ namespace Assessment1._1
 
         private void generate_meals_btn_Click(object sender, EventArgs e)
         {
-            // looking at return values
-            // how to access name of meal
-            // label1.Text = MealList[0].name;
-
-            // accessing a random meal with true lunch value
-            Random number = new Random();
-
-            for (int i = 0; i < MealList.Count; i++)
-            {
-                if (MealList[number.Next(MealList.Count)].isLunch == true) // for dinner meals change to false
-                {
-                    // label 1 doesnt exist ( change to element in form )
-                    // label1.Text = MealList[number.Next(MealList.Count)].name;
-                }
-            }
-            // use this function to determine whether a meal is lunch/dinner/vegan. change bool attribute in if statement
-
-            // Removes plan meals button, generates ui
             Controls.Remove(generate_meals_btn);
             GenerateUi(false);
         }

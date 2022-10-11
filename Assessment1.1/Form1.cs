@@ -118,6 +118,7 @@ namespace Assessment1._1
 
             List<string> BreakfastMuffinsRecipe = new List<string> { "banana", "seeds", "blueberries", "flour" };
             MealList.Add(new Meals("Breakfast Muffins", BreakfastMuffinsRecipe, 179, true, false, false));
+
             #endregion
         }
 

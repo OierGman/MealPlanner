@@ -277,7 +277,7 @@ namespace Assessment1._1
         private void button_Click(object sender, EventArgs e)
         {
             //test works
-             ((Button)sender).Text = ;
+             ((Button)sender).Text = "X";
             //GetMealData()
         }
 

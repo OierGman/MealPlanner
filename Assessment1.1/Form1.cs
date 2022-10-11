@@ -277,7 +277,7 @@ namespace Assessment1._1
 
             Button addMeals = new Button()
             {
-                Text = "Extra Button",
+                Text = "Add meals",
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
@@ -326,7 +326,8 @@ namespace Assessment1._1
 
         private void veganMealsButton_Click(object sender, EventArgs e)
         {
-            
+            this.Controls.Clear();
+            GenerateUi(true);
         }
 
         private void exportRecipeButton_Click(object sender, EventArgs e)

@@ -195,5 +195,12 @@ namespace Assessment1._1
             var mealIndex = random.Next(MealList.Count);
             return MealList[mealIndex];
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
+            
+        }
     }
 }

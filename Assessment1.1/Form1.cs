@@ -350,7 +350,8 @@ namespace Assessment1._1
         private void button_Click(object sender, EventArgs e)
         {
             //test works
-            ((Button)sender).Text = "X";
+            ((Button)sender).Text = MealList[GetLunch(false)].name;
+
             //GetMealData()
         }
         // addMeals button click event handler

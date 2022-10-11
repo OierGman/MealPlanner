@@ -16,6 +16,7 @@ namespace Assessment1._1
     {
 
         List<Meals> MealList = new List<Meals>();
+
         public Form1()
         {
             InitializeComponent();
@@ -23,16 +24,17 @@ namespace Assessment1._1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            #region Meals Initialisation 
+            #region Meals Initialisation
+
             // initialising a meal with objects
-            List<string> SpaghettiBologneseRecipe = new List<string>{"minced", "spaghetti", "pasata", "cheese"};
+            List<string> SpaghettiBologneseRecipe = new List<string> { "minced", "spaghetti", "pasata", "cheese" };
             MealList.Add(new Meals("Spaghetti Bolognese", SpaghettiBologneseRecipe, 800, false, true, true));
 
-            List<string> CourgettePakorasRecipe  = new List<string> { "Courgette", "Chilli", "Flour" };
+            List<string> CourgettePakorasRecipe = new List<string> { "Courgette", "Chilli", "Flour" };
             MealList.Add(new Meals("Courgette Pakoras", CourgettePakorasRecipe, 84, true, true, false));
 
-            List<string> VeggieWrapRecipe = new List<string> { "Tortilla", "Red Cabbage", "Olives"};
-            MealList.Add(new Meals("Veggie Wraps", VeggieWrapRecipe, 281, true ,true, false));
+            List<string> VeggieWrapRecipe = new List<string> { "Tortilla", "Red Cabbage", "Olives" };
+            MealList.Add(new Meals("Veggie Wraps", VeggieWrapRecipe, 281, true, true, false));
 
             List<string> SpinnachMushroomPastaRecipe = new List<string> { "Penne Pasta", "Mushroom", "Spinnach" };
             MealList.Add(new Meals("Spinach Mushroom Pasta", SpinnachMushroomPastaRecipe, 483, true, true, true));
@@ -49,10 +51,10 @@ namespace Assessment1._1
             List<string> JackfruitBurgerRecipe = new List<string> { "Jackfruit", "Mushroom", "Potato" };
             MealList.Add(new Meals("Jackfruit Burger", JackfruitBurgerRecipe, 416, true, true, true));
 
-            List<string> FalafelRecipe = new List<string> { "Chickpease ", "Onions", "Broad Beans"};
+            List<string> FalafelRecipe = new List<string> { "Chickpease ", "Onions", "Broad Beans" };
             MealList.Add(new Meals("Falafel", FalafelRecipe, 139, true, true, true));
 
-            List<string> VeganCarbonaraRecipe = new List<string> { "Spagehett" , "Cashew Nuts", "Mushrooms" };
+            List<string> VeganCarbonaraRecipe = new List<string> { "Spagehett", "Cashew Nuts", "Mushrooms" };
             MealList.Add(new Meals("Vegan Carbonara", VeganCarbonaraRecipe, 499, true, true, true));
 
             List<string> CrunchSaladRecipe = new List<string> { "Almonds", "Radishes", "Edamame" };
@@ -67,8 +69,9 @@ namespace Assessment1._1
             List<string> SweetPotatoSoupRecipe = new List<string> { "Sweet Potato", "Vegetable Stock", "Garlic" };
             MealList.Add(new Meals("Sweet Potato Soup", SweetPotatoSoupRecipe, 458, true, true, false));
 
-            List<string> GreenBeanSaladRecipe = new List<string> {"Green Beans", "Garlic", "Mint" };
+            List<string> GreenBeanSaladRecipe = new List<string> { "Green Beans", "Garlic", "Mint" };
             MealList.Add(new Meals("Green Bean Salad", GreenBeanSaladRecipe, 79, true, true, false));
+
             #endregion
         }
 
@@ -83,7 +86,7 @@ namespace Assessment1._1
 
             for (int i = 0; i < MealList.Count; i++)
             {
-                if (MealList[number.Next(MealList.Count)].isLunch == true ) // for dinner meals change to false
+                if (MealList[number.Next(MealList.Count)].isLunch == true) // for dinner meals change to false
                 {
                     // label 1 doesnt exist ( change to element in form )
                     // label1.Text = MealList[number.Next(MealList.Count)].name;
@@ -97,8 +100,9 @@ namespace Assessment1._1
             GenerateUi();
 
         }
+
         // Generates the user interface 
-        private void GenerateUi()
+        public void GenerateUi()
         {
             Panel mealTableContainer = new Panel();
             this.Controls.Add(mealTableContainer);
@@ -122,65 +126,67 @@ namespace Assessment1._1
             mealTimeTableWeek.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
             mealTimeTableWeek.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
             // Populating columns/rows
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Monday", TextAlign  = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill}, 1, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Tuesday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 2, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Wednesday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 3, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Thursday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 4, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Friday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 5, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Saturday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 6, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Sunday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 7, 0);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Lunch", TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill }, 0, 1);
-            mealTimeTableWeek.Controls.Add(new Label() { Text = "Dinner", TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill }, 0, 2);
+            mealTimeTableWeek.Controls.Add(
+                new Label() { Text = "Monday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 1,
+                0);
+            mealTimeTableWeek.Controls.Add(
+                new Label() { Text = "Tuesday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 2,
+                0);
+            mealTimeTableWeek.Controls.Add(
+                new Label() { Text = "Wednesday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 3,
+                0);
+            mealTimeTableWeek.Controls.Add(
+                new Label() { Text = "Thursday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 4,
+                0);
+            mealTimeTableWeek.Controls.Add(
+                new Label() { Text = "Friday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 5,
+                0);
+            mealTimeTableWeek.Controls.Add(
+                new Label() { Text = "Saturday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 6,
+                0);
+            mealTimeTableWeek.Controls.Add(
+                new Label() { Text = "Sunday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 7,
+                0);
+            mealTimeTableWeek.Controls.Add(
+                new Label() { Text = "Lunch", TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill }, 0, 1);
+            mealTimeTableWeek.Controls.Add(
+                new Label() { Text = "Dinner", TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill }, 0, 2);
             // add meal timetable to container
             mealTableContainer.Controls.Add(mealTimeTableWeek);
             // creates a meal button for every cell in the mealTimeTableWeek
-            for (int i = 1; i < 7; i++)
+            for (int i = 1; i <= 7; i++)
             {
-                // gets meal object, accesses property and value using reflection
-                object meal = GetMeal();
-                // access property name
-                var mealPropertyName = meal.GetType().GetProperty("name");
-                var mealValueName = mealPropertyName.GetValue(meal);
-                // access property isLunch
-                var mealPropertyLunch = meal.GetType().GetProperty("isLunch");
-                var mealValueLunch = mealPropertyLunch.GetValue(meal);
-                // access property isDinner
-                var mealPropertyDinner = meal.GetType().GetProperty("isDinner");
-                var mealValueDinner = mealPropertyLunch.GetValue(meal);
-
-                if ((bool)mealValueLunch)
+                int mealLunch = GetMeal();
+                mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    mealTimeTableWeek.Controls.Add(new Button()
-                    {
-                        Text = (string)mealValueName,
-                        TextAlign = ContentAlignment.TopCenter,
-                        Dock = DockStyle.Fill,
-                        FlatStyle = FlatStyle.Flat,
-                        BackColor = Color.Transparent,
-                        FlatAppearance =
-                            { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-                    }, i, 1);
-                }
-                if((bool)mealValueDinner)
+                    Text = MealList[mealLunch].name,
+                    TextAlign = ContentAlignment.TopCenter,
+                    Dock = DockStyle.Fill,
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = Color.Transparent,
+                    FlatAppearance =
+                        { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+                }, i, 1);
+                int mealDinner = GetDinner();
+                mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    mealTimeTableWeek.Controls.Add(new Button()
-                    {
-                        Text = (string)mealValueName,
-                        TextAlign = ContentAlignment.TopCenter,
-                        Dock = DockStyle.Fill,
-                        FlatStyle = FlatStyle.Flat,
-                        BackColor = Color.Transparent,
-                        FlatAppearance =
-                            { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-                    }, i, 2);
-                }
+                    Text = MealList[mealDinner].name,
+                    TextAlign = ContentAlignment.TopCenter,
+                    Dock = DockStyle.Fill,
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = Color.Transparent,
+                    FlatAppearance =
+                        { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+                }, i, 2);
             }
+
             // adds a click event for all meals buttons of mealTimeTableWeek
             foreach (var button in mealTimeTableWeek.Controls.OfType<Button>())
             {
                 button.Click += button_Click;
             }
         }
+
         // event handler that accesses meal information
         private void button_Click(object sender, EventArgs e)
         {
@@ -188,12 +194,31 @@ namespace Assessment1._1
             ((Button)sender).Text = "X";
             //GetMealData()
         }
+
         // gets a random meal
-        private object GetMeal()
+        public int GetMeal()
         {
-            var random = new Random();
-            var mealIndex = random.Next(MealList.Count);
-            return MealList[mealIndex];
+            while (true)
+            {
+                var random = new Random();
+                var mealIndex = random.Next(MealList.Count);
+                if (MealList[mealIndex].isLunch == true)
+                {
+                    return mealIndex;
+                }
+            }
+        }
+        public int GetDinner()
+        {
+            while (true)
+            {
+                var random = new Random();
+                var mealIndex = random.Next(MealList.Count);
+                if (MealList[mealIndex].isDinner == true)
+                {
+                    return mealIndex;
+                }
+            }
         }
     }
 }

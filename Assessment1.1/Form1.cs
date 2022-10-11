@@ -277,13 +277,11 @@ namespace Assessment1._1
         private void button_Click(object sender, EventArgs e)
         {
             //test works
-            // ((Button)sender).Text = ;
+             ((Button)sender).Text = ;
             //GetMealData()
         }
 
         // checks if a meal is a meal
-        public int GetLunch()
-        // gets a random meal
         public int GetLunch(bool vegan)
         {
             while (true)
@@ -297,7 +295,6 @@ namespace Assessment1._1
             }
         }
         // checks if a meal is a dinner
-        public int GetDinner()
         public int GetDinner(bool vegan)
         {
             while (true)

@@ -32,16 +32,16 @@ namespace Assessment1._1
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.generate_meals_btn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // generate_meals_btn
             // 
             this.generate_meals_btn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.generate_meals_btn.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.generate_meals_btn.Location = new System.Drawing.Point(338, 272);
-            this.generate_meals_btn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.generate_meals_btn.Location = new System.Drawing.Point(296, 204);
             this.generate_meals_btn.Name = "generate_meals_btn";
-            this.generate_meals_btn.Size = new System.Drawing.Size(203, 63);
+            this.generate_meals_btn.Size = new System.Drawing.Size(178, 47);
             this.generate_meals_btn.TabIndex = 0;
             this.generate_meals_btn.Text = "Plan My Meals!";
             this.generate_meals_btn.UseVisualStyleBackColor = true;
@@ -49,10 +49,10 @@ namespace Assessment1._1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(753, 535);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(659, 401);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 29);
+            this.button1.Size = new System.Drawing.Size(80, 22);
             this.button1.TabIndex = 1;
             this.button1.Text = "Add Meal";
             this.button1.UseVisualStyleBackColor = true;
@@ -60,15 +60,14 @@ namespace Assessment1._1
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.generate_meals_btn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Meal Allocator";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -80,6 +79,7 @@ namespace Assessment1._1
 
         private System.Windows.Forms.Button generate_meals_btn;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

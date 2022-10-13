@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -17,7 +18,7 @@ namespace Assessment1._1
         // add recipe list here
 
         List<Meals> MealList = new List<Meals>();
-        List<string> weeksMeals = new List<string>();
+        List<string> weeksIngredients = new List<string>();
 
         public Form1()
         {
@@ -297,7 +298,7 @@ namespace Assessment1._1
                 {
                     foreach (var x in MealList[mealIndex].ingredient)
                     {
-                        weeksMeals.Add(x);
+                        weeksIngredients.Add(x);
                     }
                     return mealIndex;
                 }
@@ -314,13 +315,30 @@ namespace Assessment1._1
                 {
                     foreach (var x in MealList[mealIndex].ingredient)
                     {
-                        weeksMeals.Add(x);
+                        weeksIngredients.Add(x);
                     }
                     return mealIndex;
                 }
             }
         }
+        //Button click to display the shopping list in a pop up box and save it as a .txt file. 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string shoppingList = string.Join(", ", weeksIngredients.ToArray());
 
+            System.Windows.Forms.MessageBox.Show("This Weeks Shopping List: " + shoppingList);
+
+            SaveFileDialog save = new SaveFileDialog();
+
+            save.FileName = "ShoppingList.txt";
+            save.Filter = "Text File | *.txt";
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(saveFileDialog.FileName, shoppingList);
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();

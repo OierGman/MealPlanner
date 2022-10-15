@@ -355,16 +355,17 @@ namespace Assessment1._1
 
             System.Windows.Forms.MessageBox.Show("This Weeks Shopping List: " + shoppingList);
 
-            SaveFileDialog save = new SaveFileDialog();
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
-            save.FileName = "ShoppingList.txt";
-            save.Filter = "Text File | *.txt";
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
 
-            // event handler that accesses meal information
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            DialogResult result = saveFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
             {
-                // File.WriteAllText(saveFileDialog.FileName, shoppingList);
+                string name = saveFileDialog1.FileName;
+                File.WriteAllText(name, shoppingList);
             }
 
         }
@@ -424,7 +425,7 @@ namespace Assessment1._1
         // event handler that accesses meal information
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                // File.WriteAllText(saveFileDialog.FileName, shoppingList);
+                File.WriteAllText(save.FileName, shoppingList);
             }
         }
         private void button_Click(object sender, EventArgs e)

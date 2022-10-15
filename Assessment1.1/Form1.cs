@@ -322,7 +322,10 @@ namespace Assessment1._1
 
         private void coreIngredientsButton_Click(object sender, EventArgs e)
         {
-            
+            // rashid working here
+            string coreIngredient = "chicken";
+
+            // rashidmethod(coreIngredient);
         }
 
         // checks if a meal is a meal, appends ingredients to a list for further use

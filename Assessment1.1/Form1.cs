@@ -412,25 +412,7 @@ namespace Assessment1._1
                 }
             }
         }
-        //Button click to display the shopping list in a pop up box and save it as a .txt file. 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string shoppingList = string.Join(", ", weeksIngredients.ToArray());
-
-            System.Windows.Forms.MessageBox.Show("This Weeks Shopping List: " + shoppingList);
-
-            SaveFileDialog save = new SaveFileDialog();
-
-            save.FileName = "ShoppingList.txt";
-            save.Filter = "Text File | *.txt";
-            saveFileDialog1.RestoreDirectory = true;
-
-        // event handler that accesses meal information
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(save.FileName, shoppingList);
-            }
-        }
+       
         private void button_Click(object sender, EventArgs e)
         {
             //test works

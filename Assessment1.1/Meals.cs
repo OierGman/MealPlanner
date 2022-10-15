@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Assessment1._1
 {
     class Meals
     {
+        public static List<Meals> MealList = new List<Meals>();
         // meals class 
         private string Name;
         private List<string> Ingredients;

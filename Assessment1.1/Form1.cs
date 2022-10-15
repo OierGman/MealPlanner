@@ -13,7 +13,7 @@ namespace Assessment1._1
         bool veganCheck = false;
         List<string> weeksIngredients = new List<string>();
         CheckedListBox checkLB;
-        string selectedMeal;
+        TextBox selectedIngredient = new TextBox();
 
         public Form1()
         {
@@ -153,9 +153,8 @@ namespace Assessment1._1
                 checkLB.ItemCheck -= checkLB_ItemCheck;
                 checkLB.SetItemChecked(checkLB.CheckedIndices[0], false);
                 checkLB.ItemCheck += checkLB_ItemCheck;
-                //selectedMeal = checkLB.Items(e.Index).ToString;
-
             }
+
         }
 
         // Generates the user interface 
@@ -221,8 +220,9 @@ namespace Assessment1._1
                 Dock = DockStyle.Fill,
                 RowCount = 3
             };
-            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             // adds side panel to container
             mealTableContainer.Controls.Add(mealSidePanel);
@@ -235,6 +235,8 @@ namespace Assessment1._1
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.Transparent,
             }, 0, 0);
+
+            mealSidePanel.Controls.Add(selectedIngredient, 0, 2);
 
             mealSidePanel.Controls.Add(checkLB);
             
@@ -251,6 +253,19 @@ namespace Assessment1._1
 
             mealSidePanelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             mealSidePanelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+
+            Button coreIngredientsButton = new Button()
+            {
+                Text = "Core Ingredients Filter",
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Transparent,
+                FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            };
+            mealSidePanelButtons.Controls.Add(coreIngredientsButton);
+            coreIngredientsButton.Click += coreIngredientsButton_Click;
 
             Button veganMealsButton = new Button()
             {
@@ -277,19 +292,6 @@ namespace Assessment1._1
             };
             mealSidePanelButtons.Controls.Add(exportRecipeButton);
             exportRecipeButton.Click += exportRecipeButton_Click;
-
-            Button coreIngredientsButton = new Button()
-            {
-                Text = "Core Ingredients Filter",
-                TextAlign = ContentAlignment.MiddleCenter,
-                Dock = DockStyle.Fill,
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.Transparent,
-                FlatAppearance =
-                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-            };
-            mealSidePanelButtons.Controls.Add(coreIngredientsButton);
-            coreIngredientsButton.Click += coreIngredientsButton_Click;
 
             Button addMeals = new Button()
             {

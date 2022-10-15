@@ -4,6 +4,7 @@ namespace Assessment1._1
 {
     class Meals
     {
+        public static List<Meals> MealList = new List<Meals>();
         // meals class 
         private string Name;
         private List<string> Ingredients;

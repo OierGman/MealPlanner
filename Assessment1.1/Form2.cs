@@ -85,5 +85,10 @@ namespace Assessment1._1
         {
 
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

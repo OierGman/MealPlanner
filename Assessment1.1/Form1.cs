@@ -12,6 +12,8 @@ namespace Assessment1._1
         // add recipe list here
         bool veganCheck = false;
         List<string> weeksIngredients = new List<string>();
+        CheckedListBox checkLB;
+        string selectedMeal;
 
         public Form1()
         {
@@ -117,8 +119,43 @@ namespace Assessment1._1
 
         private void generate_meals_btn_Click(object sender, EventArgs e)
         {
+            CreateCheckedlistBox();
+            BindCheckedlistBox();
+
             Controls.Remove(generate_meals_btn);
             GenerateUi(false);
+        }
+
+        // initialize new checkedlistbox
+        private void CreateCheckedlistBox()
+        {
+            checkLB = new CheckedListBox();
+            checkLB.FormattingEnabled = true;
+            checkLB.Name = "CheckedListBox1";
+            checkLB.Dock = DockStyle.Fill;
+            checkLB.CheckOnClick = true;
+            checkLB.ItemCheck += checkLB_ItemCheck;
+        }
+
+        // populate checkedlistbox
+        public void BindCheckedlistBox()
+        {
+            for (int i = 0; i < Meals.MealList.Count; i++)
+            {
+                checkLB.Items.Add(Meals.MealList[i].name);
+            }
+            //checkLB.Items.Add(Meals.MealList[0].name);
+        }
+        private void checkLB_ItemCheck(System.Object sender, System.Windows.Forms.ItemCheckEventArgs e)
+        {
+            if (e.NewValue == CheckState.Checked && checkLB.CheckedItems.Count > 0)
+            {
+                checkLB.ItemCheck -= checkLB_ItemCheck;
+                checkLB.SetItemChecked(checkLB.CheckedIndices[0], false);
+                checkLB.ItemCheck += checkLB_ItemCheck;
+                //selectedMeal = checkLB.Items(e.Index).ToString;
+
+            }
         }
 
         // Generates the user interface 
@@ -198,12 +235,9 @@ namespace Assessment1._1
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.Transparent,
             }, 0, 0);
-            mealSidePanel.Controls.Add(new TextBox()
-            {
-                Text = "MEAL RECIPE",
-                Dock = DockStyle.Fill,
-                Multiline = true,
-            }, 0, 1);
+
+            mealSidePanel.Controls.Add(checkLB);
+            
             TableLayoutPanel mealSidePanelButtons = new TableLayoutPanel()
             {
                 RowCount = 2,
@@ -317,7 +351,23 @@ namespace Assessment1._1
 
         private void exportRecipeButton_Click(object sender, EventArgs e)
         {
-            
+            string shoppingList = string.Join(", ", weeksIngredients.ToArray());
+
+            System.Windows.Forms.MessageBox.Show("This Weeks Shopping List: " + shoppingList);
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            DialogResult result = saveFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string name = saveFileDialog1.FileName;
+                File.WriteAllText(name, shoppingList);
+            }
+
         }
 
         private void coreIngredientsButton_Click(object sender, EventArgs e)
@@ -378,14 +428,14 @@ namespace Assessment1._1
         // event handler that accesses meal information
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                // File.WriteAllText(saveFileDialog.FileName, shoppingList);
+                File.WriteAllText(save.FileName, shoppingList);
             }
         }
         private void button_Click(object sender, EventArgs e)
         {
             //test works
-            ((Button)sender).Text = Meals.MealList[GetLunch()].name;
-
+            //((Button)sender).Text = Meals.MealList[Meals.MealList.Count - 1].name;
+            //((Button)sender).Text = checkLB.Items()
             //GetMealData()
         }
         // addMeals button click event handler

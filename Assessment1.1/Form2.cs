@@ -8,7 +8,6 @@ namespace Assessment1._1
 
     {
         List<string> CoreIngridients;
-        List<Meals> MealList = new List<Meals>();
         String MealName;
         bool Lunch;
         bool Dinner;
@@ -22,11 +21,8 @@ namespace Assessment1._1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MealList.Add(new Meals(MealName, CoreIngridients, Calories, Vegan, Lunch, Dinner));
+            Meals.MealList.Add(new Meals(MealName, CoreIngridients, Calories, Vegan, Lunch, Dinner));
             this.Close();
-
-
-
 
         }
 

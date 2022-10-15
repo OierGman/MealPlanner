@@ -10,6 +10,7 @@ namespace Assessment1._1
     public partial class Form1 : Form
     {
         // add recipe list here
+        bool veganCheck = false;
         List<string> weeksIngredients = new List<string>();
 
         public Form1()
@@ -121,7 +122,7 @@ namespace Assessment1._1
         }
 
         // Generates the user interface 
-        public void GenerateUi(bool vegan)
+        public void GenerateUi(bool veganCheck)
         {
             TableLayoutPanel mealTableContainer = new TableLayoutPanel();
             this.Controls.Add(mealTableContainer);
@@ -273,7 +274,7 @@ namespace Assessment1._1
 
             for (int i = 1; i <= 7; i++)
             {
-                int mealLunch = GetLunch(vegan);
+                int mealLunch = GetLunch();
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
                     Text = Meals.MealList[mealLunch].name,
@@ -285,7 +286,7 @@ namespace Assessment1._1
                     FlatAppearance =
                         { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
                 }, i, 1);
-                int mealDinner = GetDinner(vegan);
+                int mealDinner = GetDinner();
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
                     Text = Meals.MealList[mealDinner].name,
@@ -310,7 +311,8 @@ namespace Assessment1._1
         private void veganMealsButton_Click(object sender, EventArgs e)
         {
             this.Controls.Clear();
-            GenerateUi(true);
+            veganCheck = !veganCheck;
+            GenerateUi(veganCheck);
         }
 
         private void exportRecipeButton_Click(object sender, EventArgs e)
@@ -324,13 +326,13 @@ namespace Assessment1._1
         }
 
         // checks if a meal is a meal, appends ingredients to a list for further use
-        public int GetLunch(bool vegan)
+        public int GetLunch()
         {
             while (true)
             {
                 var random = new Random();
                 var mealIndex = random.Next(Meals.MealList.Count);
-                if (Meals.MealList[mealIndex].isLunch == true && Meals.MealList[mealIndex].isVegan == vegan)
+                if (Meals.MealList[mealIndex].isLunch == true && Meals.MealList[mealIndex].isVegan == veganCheck)
                 {
                     foreach (var x in Meals.MealList[mealIndex].ingredient)
                     {
@@ -341,13 +343,13 @@ namespace Assessment1._1
             }
         }
         // checks if a meal is a dinner, appends ingredients to a list for further use
-        public int GetDinner(bool vegan)
+        public int GetDinner()
         {
             while (true)
             {
                 var random = new Random();
                 var mealIndex = random.Next(Meals.MealList.Count);
-                if (Meals.MealList[mealIndex].isDinner == true && Meals.MealList[mealIndex].isVegan == vegan)
+                if (Meals.MealList[mealIndex].isDinner == true && Meals.MealList[mealIndex].isVegan == veganCheck)
                 {
                     foreach (var x in Meals.MealList[mealIndex].ingredient)
                     {
@@ -379,7 +381,7 @@ namespace Assessment1._1
         private void button_Click(object sender, EventArgs e)
         {
             //test works
-            ((Button)sender).Text = Meals.MealList[GetLunch(false)].name;
+            ((Button)sender).Text = Meals.MealList[GetLunch()].name;
 
             //GetMealData()
         }

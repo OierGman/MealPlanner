@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,7 +9,9 @@ namespace Assessment1._1
 {
     public partial class Form1 : Form
     {
+        // add recipe list here
         List<Meals> MealList = new List<Meals>();
+        List<string> weeksIngredients = new List<string>();
 
         public Form1()
         {
@@ -275,6 +278,7 @@ namespace Assessment1._1
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
                     Text = MealList[mealLunch].name,
+                    // extract ingredient list
                     TextAlign = ContentAlignment.TopCenter,
                     Dock = DockStyle.Fill,
                     FlatStyle = FlatStyle.Flat,
@@ -286,6 +290,7 @@ namespace Assessment1._1
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
                     Text = MealList[mealDinner].name,
+                    // extract ingredient list
                     TextAlign = ContentAlignment.TopCenter,
                     Dock = DockStyle.Fill,
                     FlatStyle = FlatStyle.Flat,
@@ -319,7 +324,7 @@ namespace Assessment1._1
             
         }
 
-        // checks if a meal is a meal
+        // checks if a meal is a meal, appends ingredients to a list for further use
         public int GetLunch(bool vegan)
         {
             while (true)
@@ -328,11 +333,15 @@ namespace Assessment1._1
                 var mealIndex = random.Next(MealList.Count);
                 if (MealList[mealIndex].isLunch == true && MealList[mealIndex].isVegan == vegan)
                 {
+                    foreach (var x in MealList[mealIndex].ingredient)
+                    {
+                        weeksIngredients.Add(x);
+                    }
                     return mealIndex;
                 }
             }
         }
-        // checks if a meal is a dinner
+        // checks if a meal is a dinner, appends ingredients to a list for further use
         public int GetDinner(bool vegan)
         {
             while (true)
@@ -341,12 +350,33 @@ namespace Assessment1._1
                 var mealIndex = random.Next(MealList.Count);
                 if (MealList[mealIndex].isDinner == true && MealList[mealIndex].isVegan == vegan)
                 {
+                    foreach (var x in MealList[mealIndex].ingredient)
+                    {
+                        weeksIngredients.Add(x);
+                    }
                     return mealIndex;
                 }
             }
         }
+        //Button click to display the shopping list in a pop up box and save it as a .txt file. 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string shoppingList = string.Join(", ", weeksIngredients.ToArray());
+
+            System.Windows.Forms.MessageBox.Show("This Weeks Shopping List: " + shoppingList);
+
+            SaveFileDialog save = new SaveFileDialog();
+
+            save.FileName = "ShoppingList.txt";
+            save.Filter = "Text File | *.txt";
+            saveFileDialog1.RestoreDirectory = true;
 
         // event handler that accesses meal information
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(saveFileDialog.FileName, shoppingList);
+            }
+        }
         private void button_Click(object sender, EventArgs e)
         {
             //test works

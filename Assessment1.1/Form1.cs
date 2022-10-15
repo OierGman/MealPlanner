@@ -353,7 +353,8 @@ namespace Assessment1._1
 
         private void exportRecipeButton_Click(object sender, EventArgs e)
         {
-            string shoppingList = string.Join(", ", weeksIngredients.ToArray());
+            var weeksIngredients2 = weeksIngredients.Distinct().ToList();
+            string shoppingList = string.Join(", ", weeksIngredients2.ToArray());
 
             System.Windows.Forms.MessageBox.Show("This Weeks Shopping List: " + shoppingList);
 

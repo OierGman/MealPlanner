@@ -26,7 +26,7 @@ namespace Assessment1._1
             Meals.MealList.Add(new Meals(MealName, CoreIngridients, Calories, Vegan, Lunch, Dinner));
             this.Close();
         }
-
+        // Converting user input to variables inorder to store information inside the class
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             MealName = MealNameTextBox.Text;

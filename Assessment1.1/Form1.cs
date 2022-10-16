@@ -546,6 +546,7 @@ namespace Assessment1._1
         // addMeals button click event handler
         private void addMeals_Click(object sender, EventArgs e)
         {
+           //Opens Second Form inorder to add meal
             Form2 form2 = new Form2();
             form2.ShowDialog();
         }

@@ -164,7 +164,7 @@ namespace Assessment1._1
 
         private void CreateTxtBox()
         {
-            selectedIngredient.Text = "search by ingredient";
+            selectedIngredient.Text = "search by ingredient or daypart";
             selectedIngredient.Dock = DockStyle.Fill;
             selectedIngredient.Enter += textBox_Enter;
             selectedIngredient.Leave += textBox_Leave;
@@ -173,7 +173,7 @@ namespace Assessment1._1
 
         private void textBox_Enter(object sender, EventArgs e)
         {
-            if (selectedIngredient.Text == "search by ingredient")
+            if (selectedIngredient.Text == "search by ingredient or daypart")
             {
                 selectedIngredient.Text = "";
             }
@@ -183,7 +183,7 @@ namespace Assessment1._1
         {
             if (selectedIngredient.Text == "")
             {
-                selectedIngredient.Text = "search by ingredient";
+                selectedIngredient.Text = "search by ingredient or daypart";
             }
         }
 
@@ -378,9 +378,22 @@ namespace Assessment1._1
         private void veganMealsButton_Click(object sender, EventArgs e)
         {
             // loads new UI based on vegan/meat toggle
+            weeksIngredients.Clear();
+
             this.Controls.Clear();
             veganCheck = !veganCheck;
             GenerateUi(veganCheck);
+
+            checkLB.Items.Clear();
+
+            for (int i = 0; i < Meals.MealList.Count; i++)
+            {
+                if (Meals.MealList[i].isVegan == true)
+                {
+                    checkLB.Items.Add(Meals.MealList[i].name);
+
+                }
+            }
         }
 
         private void exportRecipeButton_Click(object sender, EventArgs e)
@@ -407,8 +420,24 @@ namespace Assessment1._1
         private void coreIngredientsButton_Click(object sender, EventArgs e)
         {
             // rashid working here
-            string coreIngredient = "chicken";
-            if (selectedIngredient.Text == " " || selectedIngredient.Text == "search by ingredient")
+            if (selectedIngredient.Text.ToLower() == "lunch" || selectedIngredient.Text.ToLower() == "dinner")
+            {
+                checkLB.Items.Clear();
+
+                for (int i = 0; i < Meals.MealList.Count; i++)
+                {
+                    if (Meals.MealList[i].isLunch == true && selectedIngredient.Text.ToLower() == "lunch")
+                    {
+                        checkLB.Items.Add(Meals.MealList[i].name);
+                        
+                    }
+                    if (Meals.MealList[i].isDinner == true && selectedIngredient.Text.ToLower() == "dinner")
+                    {
+                        checkLB.Items.Add(Meals.MealList[i].name);
+                    }
+                }
+            }
+            else if (selectedIngredient.Text == " " || selectedIngredient.Text == "search by ingredient or daypart")
             {
                 checkLB.Items.Clear();
                 BindCheckedlistBox();

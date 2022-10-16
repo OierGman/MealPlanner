@@ -13,7 +13,8 @@ namespace Assessment1._1
         bool veganCheck = false;
         List<string> weeksIngredients = new List<string>();
         CheckedListBox checkLB;
-        string selectedMeal;
+        TextBox selectedIngredient = new TextBox();
+        int index;
 
         public Form1()
         {
@@ -119,8 +120,10 @@ namespace Assessment1._1
 
         private void generate_meals_btn_Click(object sender, EventArgs e)
         {
+            // load new checkbox and populated
             CreateCheckedlistBox();
             BindCheckedlistBox();
+            CreateTxtBox();
 
             Controls.Remove(generate_meals_btn);
             GenerateUi(false);
@@ -144,17 +147,43 @@ namespace Assessment1._1
             {
                 checkLB.Items.Add(Meals.MealList[i].name);
             }
-            //checkLB.Items.Add(Meals.MealList[0].name);
         }
         private void checkLB_ItemCheck(System.Object sender, System.Windows.Forms.ItemCheckEventArgs e)
         {
             if (e.NewValue == CheckState.Checked && checkLB.CheckedItems.Count > 0)
             {
+                // only one check box active at any given time
                 checkLB.ItemCheck -= checkLB_ItemCheck;
                 checkLB.SetItemChecked(checkLB.CheckedIndices[0], false);
                 checkLB.ItemCheck += checkLB_ItemCheck;
-                //selectedMeal = checkLB.Items(e.Index).ToString;
+            }
+            // store index of checked item
+            index = e.Index;
+            MessageBox.Show("SELECT DAY AND DAYPART FOR THIS MEAL");
+        }
 
+        private void CreateTxtBox()
+        {
+            selectedIngredient.Text = "search by ingredient or daypart";
+            selectedIngredient.Dock = DockStyle.Fill;
+            selectedIngredient.Enter += textBox_Enter;
+            selectedIngredient.Leave += textBox_Leave;
+
+        }
+
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            if (selectedIngredient.Text == "search by ingredient or daypart")
+            {
+                selectedIngredient.Text = "";
+            }
+        }
+
+        private void textBox_Leave(object sender, EventArgs e)
+        {
+            if (selectedIngredient.Text == "")
+            {
+                selectedIngredient.Text = "search by ingredient or daypart";
             }
         }
 
@@ -221,8 +250,9 @@ namespace Assessment1._1
                 Dock = DockStyle.Fill,
                 RowCount = 3
             };
-            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             // adds side panel to container
             mealTableContainer.Controls.Add(mealSidePanel);
@@ -235,6 +265,8 @@ namespace Assessment1._1
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.Transparent,
             }, 0, 0);
+
+            mealSidePanel.Controls.Add(selectedIngredient, 0, 2);
 
             mealSidePanel.Controls.Add(checkLB);
             
@@ -251,6 +283,19 @@ namespace Assessment1._1
 
             mealSidePanelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             mealSidePanelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+
+            Button coreIngredientsButton = new Button()
+            {
+                Text = "Core Ingredients Filter",
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Transparent,
+                FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            };
+            mealSidePanelButtons.Controls.Add(coreIngredientsButton);
+            coreIngredientsButton.Click += coreIngredientsButton_Click;
 
             Button veganMealsButton = new Button()
             {
@@ -277,19 +322,6 @@ namespace Assessment1._1
             };
             mealSidePanelButtons.Controls.Add(exportRecipeButton);
             exportRecipeButton.Click += exportRecipeButton_Click;
-
-            Button coreIngredientsButton = new Button()
-            {
-                Text = "Core Ingredients Filter",
-                TextAlign = ContentAlignment.MiddleCenter,
-                Dock = DockStyle.Fill,
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.Transparent,
-                FlatAppearance =
-                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-            };
-            mealSidePanelButtons.Controls.Add(coreIngredientsButton);
-            coreIngredientsButton.Click += coreIngredientsButton_Click;
 
             Button addMeals = new Button()
             {
@@ -321,6 +353,7 @@ namespace Assessment1._1
                         { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
                 }, i, 1);
                 int mealDinner = GetDinner();
+
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
                     Text = Meals.MealList[mealDinner].name,
@@ -344,14 +377,36 @@ namespace Assessment1._1
 
         private void veganMealsButton_Click(object sender, EventArgs e)
         {
+            // loads new UI based on vegan/meat toggle
+            weeksIngredients.Clear();
+
             this.Controls.Clear();
             veganCheck = !veganCheck;
             GenerateUi(veganCheck);
+
+            checkLB.Items.Clear();
+
+            for (int i = 0; i < Meals.MealList.Count; i++)
+            {
+                if (veganCheck == true)
+                {
+                    if (Meals.MealList[i].isVegan == true)
+                    {
+                        checkLB.Items.Add(Meals.MealList[i].name);
+
+                    }
+                }
+                else
+                {
+                    checkLB.Items.Add(Meals.MealList[i].name);
+                }
+            }
         }
 
         private void exportRecipeButton_Click(object sender, EventArgs e)
         {
-            string shoppingList = string.Join(", ", weeksIngredients.ToArray());
+            var weeksIngredients2 = weeksIngredients.Distinct().ToList();
+            string shoppingList = string.Join(", ", weeksIngredients2.ToArray());
 
             System.Windows.Forms.MessageBox.Show("This Weeks Shopping List: " + shoppingList);
 
@@ -367,14 +422,52 @@ namespace Assessment1._1
                 string name = saveFileDialog1.FileName;
                 File.WriteAllText(name, shoppingList);
             }
-
         }
 
         private void coreIngredientsButton_Click(object sender, EventArgs e)
         {
             // rashid working here
-            string coreIngredient = "chicken";
+            if (selectedIngredient.Text.ToLower() == "lunch" || selectedIngredient.Text.ToLower() == "dinner")
+            {
+                checkLB.Items.Clear();
 
+                for (int i = 0; i < Meals.MealList.Count; i++)
+                {
+                    if (Meals.MealList[i].isLunch == true && selectedIngredient.Text.ToLower() == "lunch")
+                    {
+                        checkLB.Items.Add(Meals.MealList[i].name);
+                        
+                    }
+                    if (Meals.MealList[i].isDinner == true && selectedIngredient.Text.ToLower() == "dinner")
+                    {
+                        checkLB.Items.Add(Meals.MealList[i].name);
+                    }
+                }
+            }
+            else if (selectedIngredient.Text == " " || selectedIngredient.Text == "search by ingredient or daypart")
+            {
+                checkLB.Items.Clear();
+                BindCheckedlistBox();
+            }
+            else if (selectedIngredient.Text.Length > 2 )
+            {
+                checkLB.Items.Clear();
+
+                for (int i = 0; i < Meals.MealList.Count; i++)
+                {
+                    for (int j = 0; j < Meals.MealList[i].ingredient.Count; j++)
+                    {
+                        if (selectedIngredient.Text.ToLower() == Meals.MealList[i].ingredient[j].ToLower())
+                        {
+                            checkLB.Items.Add(Meals.MealList[i].name);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                return;
+            }
             // rashidmethod(coreIngredient);
         }
 
@@ -412,32 +505,19 @@ namespace Assessment1._1
                 }
             }
         }
-        //Button click to display the shopping list in a pop up box and save it as a .txt file. 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string shoppingList = string.Join(", ", weeksIngredients.ToArray());
-
-            System.Windows.Forms.MessageBox.Show("This Weeks Shopping List: " + shoppingList);
-
-            SaveFileDialog save = new SaveFileDialog();
-
-            save.FileName = "ShoppingList.txt";
-            save.Filter = "Text File | *.txt";
-            saveFileDialog1.RestoreDirectory = true;
-
-        // event handler that accesses meal information
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(save.FileName, shoppingList);
-            }
-        }
+       
         private void button_Click(object sender, EventArgs e)
         {
-            //test works
-            //((Button)sender).Text = Meals.MealList[Meals.MealList.Count - 1].name;
-            //((Button)sender).Text = checkLB.Items()
-            //GetMealData()
+            try
+            {
+                ((Button)sender).Text = checkLB.CheckedItems[0].ToString();
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("No meal selected in side panel");
+            }
         }
+
         // addMeals button click event handler
         private void addMeals_Click(object sender, EventArgs e)
         {

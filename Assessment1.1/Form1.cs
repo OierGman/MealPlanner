@@ -388,10 +388,17 @@ namespace Assessment1._1
 
             for (int i = 0; i < Meals.MealList.Count; i++)
             {
-                if (Meals.MealList[i].isVegan == true)
+                if (veganCheck == true)
+                {
+                    if (Meals.MealList[i].isVegan == true)
+                    {
+                        checkLB.Items.Add(Meals.MealList[i].name);
+
+                    }
+                }
+                else
                 {
                     checkLB.Items.Add(Meals.MealList[i].name);
-
                 }
             }
         }

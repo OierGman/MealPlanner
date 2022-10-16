@@ -61,11 +61,13 @@ namespace Assessment1._1
             get { return IsDinner; }
             set { IsDinner = value; }
         }
+
         public bool isKids
         {
-            get { return isKids; }
+            get { return IsKids; }
             set { IsKids = value; }
         }
+
         public bool veganAlternative
         {
             get { return VeganAlternative; }

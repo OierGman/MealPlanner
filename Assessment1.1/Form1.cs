@@ -18,6 +18,7 @@ namespace Assessment1._1
         TextBox selectedIngredient = new TextBox();
         int index;
         Button search;
+        Label header;
 
         public Form1()
         {
@@ -29,10 +30,6 @@ namespace Assessment1._1
             #region Meals Initialisation
 
             // initialising a meal with objects
-
-            List<string> ChickpeaFritterRecipe = new List<string> { "red pepper", "shallots", "carrots", "garlic", "lemon", "ginger", "chickpeas", "garam masala", "cumin", "coriander", "plain flour", "egg", "cucumber", "Greek yoghurt"};
-            Meals.MealList.Add(new Meals("Chickpea Fritters", ChickpeaFritterRecipe, 700, true, true, true, true));
-
             List<string> BabyPastaSauceRecipe = new List<string> { "tomatoes", "red pepper", "garlic cloves", "courgettes", "red onion", "basil", "oregano" };
             Meals.MealList.Add(new Meals("Chickpea Fritters", BabyPastaSauceRecipe, 400, true, true, true, true));
 
@@ -189,6 +186,7 @@ namespace Assessment1._1
             BindCheckedlistBox();
             CreateTxtBox();
             CreateSearchButton();
+            CreateLabel();
 
             Controls.Remove(generate_meals_btn);
             GenerateUi(false);
@@ -228,6 +226,19 @@ namespace Assessment1._1
             };
             search.Click += coreIngredientsButton_Click;
         }
+
+        private void CreateLabel()
+        {
+            header = new Label()
+            {
+                Text = "MEAL NAME",
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Transparent,
+            };
+        }
+
         private void checkLB_ItemCheck(System.Object sender, System.Windows.Forms.ItemCheckEventArgs e)
         {
             if (e.NewValue == CheckState.Checked && checkLB.CheckedItems.Count > 0)
@@ -318,9 +329,9 @@ namespace Assessment1._1
                 new Label() { Text = "Sunday", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 7,
                 0);
             mealTimeTableWeek.Controls.Add(
-                new Label() { Text = "Lunch", TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill }, 0, 1);
+                new Label() { Text = "Lunch", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 0, 1);
             mealTimeTableWeek.Controls.Add(
-                new Label() { Text = "Dinner", TextAlign = ContentAlignment.MiddleLeft, Dock = DockStyle.Fill }, 0, 2);
+                new Label() { Text = "Dinner", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 0, 2);
 
             // add meal timetable to container
             mealTableContainer.Controls.Add(mealTimeTableWeek);
@@ -340,19 +351,10 @@ namespace Assessment1._1
             // adds side panel to container
             mealTableContainer.Controls.Add(mealSidePanel);
             // adds meal label
-            mealSidePanel.Controls.Add(new Label()
-            {
-                Text = "MEAL NAME",
-                TextAlign = ContentAlignment.MiddleCenter,
-                Dock = DockStyle.Fill,
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.Transparent,
-            }, 0, 0);
-
+            mealSidePanel.Controls.Add(header, 0, 0);
+            mealSidePanel.Controls.Add(checkLB);
             mealSidePanel.Controls.Add(selectedIngredient, 0, 2);
             mealSidePanel.Controls.Add(search, 0, 3);
-
-            mealSidePanel.Controls.Add(checkLB);
             
             TableLayoutPanel mealSidePanelButtons = new TableLayoutPanel()
             {
@@ -379,7 +381,7 @@ namespace Assessment1._1
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
             mealSidePanelButtons.Controls.Add(kidsButton);
-            kidsButton.Click += coreIngredientsButton_Click;
+            kidsButton.Click += kidsButton_Click;
 
             Button veganMealsButton = new Button()
             {
@@ -459,6 +461,7 @@ namespace Assessment1._1
 
         private void veganMealsButton_Click(object sender, EventArgs e)
         {
+            header.Text = "MEAL NAMES";
             // loads new UI based on vegan/meat toggle
             weeksIngredients.Clear();
 
@@ -507,52 +510,21 @@ namespace Assessment1._1
 
         private void kidsButton_Click(object sender, EventArgs e)
         {
-            // rashid working here
-            if (selectedIngredient.Text.ToLower() == "lunch" || selectedIngredient.Text.ToLower() == "dinner")
+            header.Text = "KIDS MEAL NAMES";
+            checkLB.Items.Clear();
+
+            for (int i = 0; i < Meals.MealList.Count; i++)
             {
-                checkLB.Items.Clear();
-
-                for (int i = 0; i < Meals.MealList.Count; i++)
+                if (Meals.MealList[i].isKids == true)
                 {
-                    if (Meals.MealList[i].isLunch == true && selectedIngredient.Text.ToLower() == "lunch")
-                    {
-                        checkLB.Items.Add(Meals.MealList[i].name);
-
-                    }
-                    if (Meals.MealList[i].isDinner == true && selectedIngredient.Text.ToLower() == "dinner")
-                    {
-                        checkLB.Items.Add(Meals.MealList[i].name);
-                    }
+                    checkLB.Items.Add(Meals.MealList[i].name);
                 }
             }
-            else if (selectedIngredient.Text == " " || selectedIngredient.Text == "search by ingredient or daypart")
-            {
-                checkLB.Items.Clear();
-                BindCheckedlistBox();
-            }
-            else if (selectedIngredient.Text.Length > 2)
-            {
-                checkLB.Items.Clear();
 
-                for (int i = 0; i < Meals.MealList.Count; i++)
-                {
-                    for (int j = 0; j < Meals.MealList[i].ingredient.Count; j++)
-                    {
-                        if (selectedIngredient.Text.ToLower() == Meals.MealList[i].ingredient[j].ToLower())
-                        {
-                            checkLB.Items.Add(Meals.MealList[i].name);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                return;
-            }
-            // rashidmethod(coreIngredient);
         }
         private void coreIngredientsButton_Click(object sender, EventArgs e)
         {
+            header.Text = "MEAL NAMES";
             // rashid working here
             if (selectedIngredient.Text.ToLower() == "lunch" || selectedIngredient.Text.ToLower() == "dinner")
             {

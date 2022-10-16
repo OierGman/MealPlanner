@@ -44,6 +44,7 @@
             this.IngridientsTxtBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.KidsMealCheckbox = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -192,6 +193,13 @@
             this.IngridientsTxtBox.Size = new System.Drawing.Size(110, 23);
             this.IngridientsTxtBox.TabIndex = 13;
             // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 23);
+            this.label6.TabIndex = 16;
+            // 
             // KidsMealCheckbox
             // 
             this.KidsMealCheckbox.AutoSize = true;
@@ -204,12 +212,22 @@
             this.KidsMealCheckbox.UseVisualStyleBackColor = true;
             this.KidsMealCheckbox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 15);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Name Of Meal";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(430, 211);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.KidsMealCheckbox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.IngridientsTxtBox);
@@ -253,5 +271,6 @@
         private System.Windows.Forms.TextBox IngridientsTxtBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox KidsMealCheckbox;
+        private System.Windows.Forms.Label label7;
     }
 }

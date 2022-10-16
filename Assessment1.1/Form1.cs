@@ -505,6 +505,52 @@ namespace Assessment1._1
             }
         }
 
+        private void kidsButton_Click(object sender, EventArgs e)
+        {
+            // rashid working here
+            if (selectedIngredient.Text.ToLower() == "lunch" || selectedIngredient.Text.ToLower() == "dinner")
+            {
+                checkLB.Items.Clear();
+
+                for (int i = 0; i < Meals.MealList.Count; i++)
+                {
+                    if (Meals.MealList[i].isLunch == true && selectedIngredient.Text.ToLower() == "lunch")
+                    {
+                        checkLB.Items.Add(Meals.MealList[i].name);
+
+                    }
+                    if (Meals.MealList[i].isDinner == true && selectedIngredient.Text.ToLower() == "dinner")
+                    {
+                        checkLB.Items.Add(Meals.MealList[i].name);
+                    }
+                }
+            }
+            else if (selectedIngredient.Text == " " || selectedIngredient.Text == "search by ingredient or daypart")
+            {
+                checkLB.Items.Clear();
+                BindCheckedlistBox();
+            }
+            else if (selectedIngredient.Text.Length > 2)
+            {
+                checkLB.Items.Clear();
+
+                for (int i = 0; i < Meals.MealList.Count; i++)
+                {
+                    for (int j = 0; j < Meals.MealList[i].ingredient.Count; j++)
+                    {
+                        if (selectedIngredient.Text.ToLower() == Meals.MealList[i].ingredient[j].ToLower())
+                        {
+                            checkLB.Items.Add(Meals.MealList[i].name);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                return;
+            }
+            // rashidmethod(coreIngredient);
+        }
         private void coreIngredientsButton_Click(object sender, EventArgs e)
         {
             // rashid working here

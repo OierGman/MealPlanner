@@ -14,6 +14,7 @@ namespace Assessment1._1
         List<string> weeksIngredients = new List<string>();
         CheckedListBox checkLB;
         TextBox selectedIngredient = new TextBox();
+        int index;
 
         public Form1()
         {
@@ -119,8 +120,10 @@ namespace Assessment1._1
 
         private void generate_meals_btn_Click(object sender, EventArgs e)
         {
+            // load new checkbox and populated
             CreateCheckedlistBox();
             BindCheckedlistBox();
+            CreateTxtBox();
 
             Controls.Remove(generate_meals_btn);
             GenerateUi(false);
@@ -144,17 +147,44 @@ namespace Assessment1._1
             {
                 checkLB.Items.Add(Meals.MealList[i].name);
             }
-            //checkLB.Items.Add(Meals.MealList[0].name);
         }
         private void checkLB_ItemCheck(System.Object sender, System.Windows.Forms.ItemCheckEventArgs e)
         {
             if (e.NewValue == CheckState.Checked && checkLB.CheckedItems.Count > 0)
             {
+                // only one check box active at any given time
                 checkLB.ItemCheck -= checkLB_ItemCheck;
                 checkLB.SetItemChecked(checkLB.CheckedIndices[0], false);
                 checkLB.ItemCheck += checkLB_ItemCheck;
             }
+            // store index of checked item
+            index = e.Index;
+            MessageBox.Show("SELECT DAY AND DAYPART FOR THIS MEAL");
+        }
 
+        private void CreateTxtBox()
+        {
+            selectedIngredient.Text = "search by ingredient";
+            selectedIngredient.Dock = DockStyle.Fill;
+            selectedIngredient.Enter += textBox_Enter;
+            selectedIngredient.Leave += textBox_Leave;
+
+        }
+
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            if (selectedIngredient.Text == "search by ingredient")
+            {
+                selectedIngredient.Text = "";
+            }
+        }
+
+        private void textBox_Leave(object sender, EventArgs e)
+        {
+            if (selectedIngredient.Text == "")
+            {
+                selectedIngredient.Text = "search by ingredient";
+            }
         }
 
         // Generates the user interface 
@@ -323,6 +353,7 @@ namespace Assessment1._1
                         { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
                 }, i, 1);
                 int mealDinner = GetDinner();
+
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
                     Text = Meals.MealList[mealDinner].name,
@@ -346,6 +377,7 @@ namespace Assessment1._1
 
         private void veganMealsButton_Click(object sender, EventArgs e)
         {
+            // loads new UI based on vegan/meat toggle
             this.Controls.Clear();
             veganCheck = !veganCheck;
             GenerateUi(veganCheck);
@@ -370,14 +402,36 @@ namespace Assessment1._1
                 string name = saveFileDialog1.FileName;
                 File.WriteAllText(name, shoppingList);
             }
-
         }
 
         private void coreIngredientsButton_Click(object sender, EventArgs e)
         {
             // rashid working here
             string coreIngredient = "chicken";
+            if (selectedIngredient.Text == " " || selectedIngredient.Text == "search by ingredient")
+            {
+                checkLB.Items.Clear();
+                BindCheckedlistBox();
+            }
+            else if (selectedIngredient.Text.Length > 2 )
+            {
+                checkLB.Items.Clear();
 
+                for (int i = 0; i < Meals.MealList.Count; i++)
+                {
+                    for (int j = 0; j < Meals.MealList[i].ingredient.Count; j++)
+                    {
+                        if (selectedIngredient.Text.ToLower() == Meals.MealList[i].ingredient[j].ToLower())
+                        {
+                            checkLB.Items.Add(Meals.MealList[i].name);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                return;
+            }
             // rashidmethod(coreIngredient);
         }
 
@@ -418,11 +472,10 @@ namespace Assessment1._1
        
         private void button_Click(object sender, EventArgs e)
         {
-            //test works
             //((Button)sender).Text = Meals.MealList[Meals.MealList.Count - 1].name;
-            //((Button)sender).Text = checkLB.Items()
-            //GetMealData()
+            ((Button)sender).Text = Meals.MealList[index].name;
         }
+
         // addMeals button click event handler
         private void addMeals_Click(object sender, EventArgs e)
         {

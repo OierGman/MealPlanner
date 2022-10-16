@@ -200,6 +200,7 @@ namespace Assessment1._1
             TableLayoutPanel mealTimeTableWeek = new TableLayoutPanel();
             mealTimeTableWeek.ColumnCount = 8;
             mealTimeTableWeek.RowCount = 3;
+            mealTimeTableWeek.BackColor = Color.LightBlue;
             mealTimeTableWeek.Dock = DockStyle.Fill;
             // Column styles
             mealTimeTableWeek.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
@@ -248,7 +249,8 @@ namespace Assessment1._1
             TableLayoutPanel mealSidePanel = new TableLayoutPanel()
             {
                 Dock = DockStyle.Fill,
-                RowCount = 3
+                RowCount = 3,
+                BackColor = Color.LightCoral
             };
             mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
@@ -290,7 +292,7 @@ namespace Assessment1._1
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
-                BackColor = Color.Transparent,
+                BackColor = Color.Coral,
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
@@ -303,7 +305,7 @@ namespace Assessment1._1
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
-                BackColor = Color.Transparent,
+                BackColor = Color.Coral,
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
@@ -316,7 +318,7 @@ namespace Assessment1._1
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
-                BackColor = Color.Transparent,
+                BackColor = Color.Coral,
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
@@ -329,7 +331,7 @@ namespace Assessment1._1
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
-                BackColor = Color.Transparent,
+                BackColor = Color.Coral,
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
@@ -347,7 +349,7 @@ namespace Assessment1._1
                     TextAlign = ContentAlignment.MiddleCenter,
                     Dock = DockStyle.Fill,
                     FlatStyle = FlatStyle.Flat,
-                    BackColor = Color.Transparent,
+                    BackColor = Color.WhiteSmoke,
                     FlatAppearance =
                         { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
                 }, i, 1);
@@ -359,7 +361,7 @@ namespace Assessment1._1
                     TextAlign = ContentAlignment.MiddleCenter,
                     Dock = DockStyle.Fill,
                     FlatStyle = FlatStyle.Flat,
-                    BackColor = Color.Transparent,
+                    BackColor = Color.WhiteSmoke,
                     FlatAppearance =
                         { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
                 }, i, 2);

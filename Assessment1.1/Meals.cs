@@ -13,8 +13,9 @@ namespace Assessment1._1
         private bool VeganAlternative;
         private bool IsLunch;
         private bool IsDinner;
+        private bool IsKids;
 
-        public Meals(string name, List<string> ingredients, int calorie, bool isVegan, bool isLunch, bool isDinner)
+        public Meals(string name, List<string> ingredients, int calorie, bool isVegan, bool isLunch, bool isDinner, bool isKids)
         {
             this.Name = name;
             this.Ingredients = ingredients;
@@ -22,6 +23,7 @@ namespace Assessment1._1
             this.IsVegan = isVegan;
             this.IsLunch = isLunch;
             this.IsDinner = isDinner;
+            this.IsKids = isKids;
         }
 
         public string name
@@ -59,7 +61,11 @@ namespace Assessment1._1
             get { return IsDinner; }
             set { IsDinner = value; }
         }
-
+        public bool isKids
+        {
+            get { return isKids; }
+            set { isKids = value; }
+        }
         public bool veganAlternative
         {
             get { return VeganAlternative; }

@@ -69,6 +69,64 @@ namespace Assessment1._1
 
             List<string> GreenBeanSaladRecipe = new List<string> {"Green Beans", "Garlic", "Mint" };
             MealList.Add(new Meals("Green Bean Salad", GreenBeanSaladRecipe, 79, true, true, false));
+
+            List<string> LasagnaRecipe = new List<string> { "Pasta", "Cheese", "Mince" };
+            MealList.Add(new Meals("Lasagna", LasagnaRecipe, 352, false, false, true));
+
+            List<string> RoastDinnerRecipe = new List<string> { "Chicken", "Potatos", "Gravy"};
+            MealList.Add(new Meals("Roast DInner", RoastDinnerRecipe, 212, false, false, true));
+
+            List<string> PizzaRecipe = new List<string> { "Tomato", "Pepperoni", "Cheese" };
+            MealList.Add(new Meals("Pizza", PizzaRecipe, 567, false, true, true));
+
+            List<string> LambCurryRecipe = new List<string> { "Lamb", "Chilli", "Rice" };
+            MealList.Add(new Meals("Lamb Curry", LambCurryRecipe, 352, false, false, true));
+
+            List<string> ChickenPastaRecipe = new List<string> {"Chickn","Bacon","Pasta" };
+            MealList.Add(new Meals("Chicken And Bacon Pasta", ChickenPastaRecipe, 257, false, true, true));
+
+            List<string> ChickenCeaserSalad = new List<string> { "Chicken","Croutons","Salad" };
+            MealList.Add(new Meals("Chicken Ceaser Salad", ChickenCeaserSalad, 352, false, true, false));
+
+            List<string> ChickenAndChipsRecipe = new List<string> {"Chicken","Chips","Veg" };
+            MealList.Add(new Meals("Chicken And Chips", ChickenAndChipsRecipe, 498, false, false, true));
+
+            List<string> SteakAndChips = new List<string> {"Steak","Chips", "Mushroom" };
+            MealList.Add(new Meals("Steak And Chips", SteakAndChips, 290, false, false, true));
+
+            List<string> KebabRecipe = new List<string> {"Lamb","Pepper","Pitta" };
+            MealList.Add(new Meals("Kebab", KebabRecipe, 480, false, true, true));
+
+            List<string> TomatoSoupRecipe = new List<string> { "Tomato","Onion","Bread" };
+            MealList.Add(new Meals("Tomato Soup", TomatoSoupRecipe, 450, false, true, false));
+
+            List<string> SausageAndMashRecipe = new List<string> { "Sausage","Mash","Gravy" };
+            MealList.Add(new Meals("Sausage And Mash",SausageAndMashRecipe, 700, false, false, true));
+
+            List<string> PorkChopAndMashRecipe = new List<string> {"Pork Chop","Mash","Veg" };
+            MealList.Add(new Meals("Pork Chop And Mash", PorkChopAndMashRecipe, 385, false, false, true));
+
+            List<string> PieAndChipsRecipe = new List<string> { "Pie","Chips","Veg" };
+            MealList.Add(new Meals("Pie And Chips", PieAndChipsRecipe, 725, false, false, true));
+
+            List<string> FishAndChipsRecipe = new List<string> { "Fish","Chips","Lemon" };
+            MealList.Add(new Meals("Fish And Chips", FishAndChipsRecipe, 659, false, false, true));
+           
+            List<string> LambCaserolleRecipe = new List<string> { "Lamb","Onion","Potato" };
+            MealList.Add(new Meals("Lamb Caserolle",LambCaserolleRecipe, 378, false, false, true));
+
+            List<string> ChickenBLTRecipe = new List<string> { "Chiken","Bacon","Tomato" };
+            MealList.Add(new Meals("Chicken BLT", ChickenBLTRecipe, 217, false, true, false));
+
+            List<string> HoumousRecipe = new List<string> { "Chickpeas","Carrots","Pitta" };
+            MealList.Add(new Meals("Houmous", HoumousRecipe, 178, false, true, false)) ;
+
+            List<string> ChickenArrabiataRecipe = new List<string> { "Chicken","Pasta","Chilli" };
+            MealList.Add(new Meals("Chicken Arrabiat", ChickenArrabiataRecipe, 367, false, false, true));
+
+            List<string> FishSoupRecipe = new List<string> { "Fish","Onion","Carrot" };
+            MealList.Add(new Meals("Fish Soup",FishSoupRecipe , 352, false, true, true));
+
             #endregion
         }
 
@@ -198,8 +256,10 @@ namespace Assessment1._1
 
         private void button1_Click(object sender, EventArgs e)
         {
+           //Opens Second Form inorder to add meal
             Form2 form2 = new Form2();
             form2.ShowDialog();
+            
             
         }
     }

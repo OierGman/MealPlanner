@@ -64,7 +64,7 @@ namespace Assessment1._1
         public bool isKids
         {
             get { return isKids; }
-            set { isKids = value; }
+            set { IsKids = value; }
         }
         public bool veganAlternative
         {

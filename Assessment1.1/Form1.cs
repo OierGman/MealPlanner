@@ -393,7 +393,6 @@ namespace Assessment1._1
                     if (Meals.MealList[i].isVegan == true)
                     {
                         checkLB.Items.Add(Meals.MealList[i].name);
-
                     }
                 }
                 else

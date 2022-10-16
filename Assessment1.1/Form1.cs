@@ -15,6 +15,7 @@ namespace Assessment1._1
         CheckedListBox checkLB;
         TextBox selectedIngredient = new TextBox();
         int index;
+        Button search;
 
         public Form1()
         {
@@ -124,6 +125,7 @@ namespace Assessment1._1
             CreateCheckedlistBox();
             BindCheckedlistBox();
             CreateTxtBox();
+            CreateSearchButton();
 
             Controls.Remove(generate_meals_btn);
             GenerateUi(false);
@@ -147,6 +149,21 @@ namespace Assessment1._1
             {
                 checkLB.Items.Add(Meals.MealList[i].name);
             }
+        }
+
+        private void CreateSearchButton()
+        {
+            search = new Button()
+            {
+                Text = "Core Ingredients Filter",
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Coral,
+                FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            };
+            search.Click += coreIngredientsButton_Click;
         }
         private void checkLB_ItemCheck(System.Object sender, System.Windows.Forms.ItemCheckEventArgs e)
         {
@@ -255,7 +272,8 @@ namespace Assessment1._1
             mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             // adds side panel to container
             mealTableContainer.Controls.Add(mealSidePanel);
             // adds meal label
@@ -269,6 +287,7 @@ namespace Assessment1._1
             }, 0, 0);
 
             mealSidePanel.Controls.Add(selectedIngredient, 0, 2);
+            mealSidePanel.Controls.Add(search, 0, 3);
 
             mealSidePanel.Controls.Add(checkLB);
             
@@ -286,9 +305,9 @@ namespace Assessment1._1
             mealSidePanelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             mealSidePanelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 
-            Button coreIngredientsButton = new Button()
+            Button kidsButton = new Button()
             {
-                Text = "Core Ingredients Filter",
+                Text = "Kids Meal Filter",
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
@@ -296,8 +315,8 @@ namespace Assessment1._1
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
-            mealSidePanelButtons.Controls.Add(coreIngredientsButton);
-            coreIngredientsButton.Click += coreIngredientsButton_Click;
+            mealSidePanelButtons.Controls.Add(kidsButton);
+            kidsButton.Click += coreIngredientsButton_Click;
 
             Button veganMealsButton = new Button()
             {
@@ -536,6 +555,7 @@ namespace Assessment1._1
                         {
                             weeksIngredients.Add(y);
                         }
+                        ((Button)sender).Text += "\n\n\n\n\n\n\n kcal - " + Meals.MealList[x].calorie.ToString();
                     }
                 }
             }

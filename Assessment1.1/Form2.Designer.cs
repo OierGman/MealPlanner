@@ -183,7 +183,6 @@
             this.label5.Size = new System.Drawing.Size(218, 15);
             this.label5.TabIndex = 12;
             this.label5.Text = "Core Ingridients (seperate with Comma)";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // IngridientsTxtBox
             // 
@@ -192,17 +191,6 @@
             this.IngridientsTxtBox.Name = "IngridientsTxtBox";
             this.IngridientsTxtBox.Size = new System.Drawing.Size(110, 23);
             this.IngridientsTxtBox.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(130, 140);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 15);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Test";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // KidsMealCheckbox
             // 

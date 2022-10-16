@@ -17,6 +17,7 @@ namespace Assessment1._1
         CheckedListBox checkLB;
         TextBox selectedIngredient = new TextBox();
         int index;
+        Button search;
 
         public Form1()
         {
@@ -187,6 +188,7 @@ namespace Assessment1._1
             CreateCheckedlistBox();
             BindCheckedlistBox();
             CreateTxtBox();
+            CreateSearchButton();
 
             Controls.Remove(generate_meals_btn);
             GenerateUi(false);
@@ -210,6 +212,21 @@ namespace Assessment1._1
             {
                 checkLB.Items.Add(Meals.MealList[i].name);
             }
+        }
+
+        private void CreateSearchButton()
+        {
+            search = new Button()
+            {
+                Text = "Core Ingredients Filter",
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Coral,
+                FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            };
+            search.Click += coreIngredientsButton_Click;
         }
         private void checkLB_ItemCheck(System.Object sender, System.Windows.Forms.ItemCheckEventArgs e)
         {
@@ -263,6 +280,7 @@ namespace Assessment1._1
             TableLayoutPanel mealTimeTableWeek = new TableLayoutPanel();
             mealTimeTableWeek.ColumnCount = 8;
             mealTimeTableWeek.RowCount = 3;
+            mealTimeTableWeek.BackColor = Color.LightBlue;
             mealTimeTableWeek.Dock = DockStyle.Fill;
             // Column styles
             mealTimeTableWeek.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
@@ -311,12 +329,14 @@ namespace Assessment1._1
             TableLayoutPanel mealSidePanel = new TableLayoutPanel()
             {
                 Dock = DockStyle.Fill,
-                RowCount = 3
+                RowCount = 3,
+                BackColor = Color.LightCoral
             };
             mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            mealSidePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             // adds side panel to container
             mealTableContainer.Controls.Add(mealSidePanel);
             // adds meal label
@@ -330,6 +350,7 @@ namespace Assessment1._1
             }, 0, 0);
 
             mealSidePanel.Controls.Add(selectedIngredient, 0, 2);
+            mealSidePanel.Controls.Add(search, 0, 3);
 
             mealSidePanel.Controls.Add(checkLB);
             
@@ -347,18 +368,18 @@ namespace Assessment1._1
             mealSidePanelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             mealSidePanelButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 
-            Button coreIngredientsButton = new Button()
+            Button kidsButton = new Button()
             {
-                Text = "Core Ingredients Filter",
+                Text = "Kids Meal Filter",
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
-                BackColor = Color.Transparent,
+                BackColor = Color.Coral,
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
-            mealSidePanelButtons.Controls.Add(coreIngredientsButton);
-            coreIngredientsButton.Click += coreIngredientsButton_Click;
+            mealSidePanelButtons.Controls.Add(kidsButton);
+            kidsButton.Click += coreIngredientsButton_Click;
 
             Button veganMealsButton = new Button()
             {
@@ -366,7 +387,7 @@ namespace Assessment1._1
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
-                BackColor = Color.Transparent,
+                BackColor = Color.Coral,
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
@@ -379,7 +400,7 @@ namespace Assessment1._1
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
-                BackColor = Color.Transparent,
+                BackColor = Color.Coral,
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
@@ -392,7 +413,7 @@ namespace Assessment1._1
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
-                BackColor = Color.Transparent,
+                BackColor = Color.Coral,
                 FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
             };
@@ -406,12 +427,11 @@ namespace Assessment1._1
                 int mealLunch = GetLunch();
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    Text = Meals.MealList[mealLunch].name,
-                    // extract ingredient list
-                    TextAlign = ContentAlignment.TopCenter,
+                    Text = Meals.MealList[mealLunch].name + "\n\n\n\n\n\n\n kcal - " + Meals.MealList[mealLunch].calorie.ToString(),
+                    TextAlign = ContentAlignment.MiddleCenter,
                     Dock = DockStyle.Fill,
                     FlatStyle = FlatStyle.Flat,
-                    BackColor = Color.Transparent,
+                    BackColor = Color.WhiteSmoke,
                     FlatAppearance =
                         { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
                 }, i, 1);
@@ -419,12 +439,11 @@ namespace Assessment1._1
 
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    Text = Meals.MealList[mealDinner].name,
-                    // extract ingredient list
-                    TextAlign = ContentAlignment.TopCenter,
+                    Text = Meals.MealList[mealDinner].name + "\n\n\n\n\n\n\n kcal - " + Meals.MealList[mealDinner].calorie.ToString(),
+                    TextAlign = ContentAlignment.MiddleCenter,
                     Dock = DockStyle.Fill,
                     FlatStyle = FlatStyle.Flat,
-                    BackColor = Color.Transparent,
+                    BackColor = Color.WhiteSmoke,
                     FlatAppearance =
                         { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
                 }, i, 2);
@@ -456,7 +475,6 @@ namespace Assessment1._1
                     if (Meals.MealList[i].isVegan == true)
                     {
                         checkLB.Items.Add(Meals.MealList[i].name);
-
                     }
                 }
                 else
@@ -571,9 +589,38 @@ namespace Assessment1._1
        
         private void button_Click(object sender, EventArgs e)
         {
+            string s = (sender as Button).Text;
+            for (int i = 0; i < Meals.MealList.Count; i++)
+            {
+                if (s == Meals.MealList[i].name)
+                {
+                    for (int j = 0; j < Meals.MealList[i].ingredient.Count; j++)
+                    {
+                        for (int k = 0; k < weeksIngredients.Count; k++)
+                        {
+                            if (weeksIngredients[k] == Meals.MealList[i].ingredient[j])
+                            {
+                                weeksIngredients.RemoveAt(k);
+                            }
+                        }
+                    }
+                }
+            }
             try
             {
                 ((Button)sender).Text = checkLB.CheckedItems[0].ToString();
+
+                for (int x = 0; x < Meals.MealList.Count; x++)
+                {
+                    if (checkLB.CheckedItems[0].ToString() == Meals.MealList[x].name)
+                    {
+                        foreach (var y in Meals.MealList[x].ingredient)
+                        {
+                            weeksIngredients.Add(y);
+                        }
+                        ((Button)sender).Text += "\n\n\n\n\n\n\n kcal - " + Meals.MealList[x].calorie.ToString();
+                    }
+                }
             }
             catch (IndexOutOfRangeException)
             {

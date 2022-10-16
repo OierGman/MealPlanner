@@ -21,6 +21,7 @@ namespace Assessment1._1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Ingredients();
             Meals.MealList.Add(new Meals(MealName, CoreIngridients, Calories, Vegan, Lunch, Dinner));
             this.Close();
 
@@ -67,9 +68,10 @@ namespace Assessment1._1
 
         }
 
-        private void IngridientsTxtBox_TextChanged(object sender, EventArgs e, string ingridients)
+        private List<string> Ingredients()
         {
             CoreIngridients = new List<string> { IngridientsTxtBox.Text };
+            return CoreIngridients;
         }
 
         private void button2_Click(object sender, EventArgs e)

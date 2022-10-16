@@ -343,9 +343,8 @@ namespace Assessment1._1
                 int mealLunch = GetLunch();
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    Text = Meals.MealList[mealLunch].name,
-                    // extract ingredient list
-                    TextAlign = ContentAlignment.TopCenter,
+                    Text = Meals.MealList[mealLunch].name + "\n\n\n\n\n\n\n kcal - " + Meals.MealList[mealLunch].calorie.ToString(),
+                    TextAlign = ContentAlignment.MiddleCenter,
                     Dock = DockStyle.Fill,
                     FlatStyle = FlatStyle.Flat,
                     BackColor = Color.Transparent,
@@ -356,9 +355,8 @@ namespace Assessment1._1
 
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    Text = Meals.MealList[mealDinner].name,
-                    // extract ingredient list
-                    TextAlign = ContentAlignment.TopCenter,
+                    Text = Meals.MealList[mealDinner].name + "\n\n\n\n\n\n\n kcal - " + Meals.MealList[mealDinner].calorie.ToString(),
+                    TextAlign = ContentAlignment.MiddleCenter,
                     Dock = DockStyle.Fill,
                     FlatStyle = FlatStyle.Flat,
                     BackColor = Color.Transparent,
@@ -393,7 +391,6 @@ namespace Assessment1._1
                     if (Meals.MealList[i].isVegan == true)
                     {
                         checkLB.Items.Add(Meals.MealList[i].name);
-
                     }
                 }
                 else
@@ -508,9 +505,37 @@ namespace Assessment1._1
        
         private void button_Click(object sender, EventArgs e)
         {
+            string s = (sender as Button).Text;
+            for (int i = 0; i < Meals.MealList.Count; i++)
+            {
+                if (s == Meals.MealList[i].name)
+                {
+                    for (int j = 0; j < Meals.MealList[i].ingredient.Count; j++)
+                    {
+                        for (int k = 0; k < weeksIngredients.Count; k++)
+                        {
+                            if (weeksIngredients[k] == Meals.MealList[i].ingredient[j])
+                            {
+                                weeksIngredients.RemoveAt(k);
+                            }
+                        }
+                    }
+                }
+            }
             try
             {
                 ((Button)sender).Text = checkLB.CheckedItems[0].ToString();
+
+                for (int x = 0; x < Meals.MealList.Count; x++)
+                {
+                    if (checkLB.CheckedItems[0].ToString() == Meals.MealList[x].name)
+                    {
+                        foreach (var y in Meals.MealList[x].ingredient)
+                        {
+                            weeksIngredients.Add(y);
+                        }
+                    }
+                }
             }
             catch (IndexOutOfRangeException)
             {

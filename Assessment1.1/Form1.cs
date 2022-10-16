@@ -508,8 +508,14 @@ namespace Assessment1._1
        
         private void button_Click(object sender, EventArgs e)
         {
-            //((Button)sender).Text = Meals.MealList[Meals.MealList.Count - 1].name;
-            ((Button)sender).Text = Meals.MealList[index].name;
+            try
+            {
+                ((Button)sender).Text = checkLB.CheckedItems[0].ToString();
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("No meal selected in side panel");
+            }
         }
 
         // addMeals button click event handler

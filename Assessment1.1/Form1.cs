@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Assessment1._1
 {
@@ -27,95 +29,156 @@ namespace Assessment1._1
             #region Meals Initialisation
 
             // initialising a meal with objects
+
+            List<string> ChickpeaFritterRecipe = new List<string> { "red pepper", "shallots", "carrots", "garlic", "lemon", "ginger", "chickpeas", "garam masala", "cumin", "coriander", "plain flour", "egg", "cucumber", "Greek yoghurt"};
+            Meals.MealList.Add(new Meals("Chickpea Fritters", ChickpeaFritterRecipe, 700, true, true, true, true));
+
+            List<string> BabyPastaSauceRecipe = new List<string> { "tomatoes", "red pepper", "garlic cloves", "courgettes", "red onion", "basil", "oregano" };
+            Meals.MealList.Add(new Meals("Chickpea Fritters", BabyPastaSauceRecipe, 400, true, true, true, true));
+
+            List<string> HealthyPancakesRecipe = new List<string> { "self-raising flour", "wholegrain flour", "eggs", "skimmed milk", "berries", "low-fat yogurt" };
+            Meals.MealList.Add(new Meals("Healthy Pancakes", HealthyPancakesRecipe, 450, false, true, false, true));
+
+            List<string> HealthyPumpkinSoupRecipe = new List<string> { "pumpkin", "jumbo oats", "coriander seeds", "chilli flakes", "tamari", "maple syrup", "olive oil", "onion", "celery sticks", "carrots", "garlic cloves", "vegetable stock" };
+            Meals.MealList.Add(new Meals("Healthy Pumpkin Soup", HealthyPumpkinSoupRecipe, 300, true, true, true, true));
+
+            List<string> ChickenTacosRecipe = new List<string> { "cumin", "smoked paprika", "chicken breasts", "tomatoes", "red pepper", "red onion", "lime juice", "chilli flakes", "avocados", "spring onions", "coriander", "corn tacos", "shells", "Greek yogurt", "Gem lettuce" };
+            Meals.MealList.Add(new Meals("Chicken Tacos", ChickenTacosRecipe, 500, false, true, true, true));
+
+            List<string> TurkeyBurgersRecipe = new List<string> { "turkey mince", "thyme", "lemon", "beetroot", "red onion", "parsley", "olive oil", "wholegrain mustard", "Gem lettuce", "wholemeal pitta bread" };
+            Meals.MealList.Add(new Meals("Turkey burgers with beetroot relish", TurkeyBurgersRecipe, 400, false, true, true, true));
+
+            List<string> FishfingersMushypeasRecipe = new List<string> { "pollock", "plain flour", "egg", "breadcrumb", "vegetable oil", "frozen peas", "butter", "lemon", "mint", "new potatoes" };
+            Meals.MealList.Add(new Meals("Fish fingers & mushy peas", FishfingersMushypeasRecipe, 400, false, true, true, true));
+
+            List<string> BakedPotatoesRecipe = new List<string> { "baking potatoes", "sunflower oil", "butter", "cheese", "baked beans", "tuna mayonnaise" };
+            Meals.MealList.Add(new Meals("Baked potatoes", BakedPotatoesRecipe, 400, false, true, true, true));
+
+            List<string> ChickenChorizoJambalayaRecipe = new List<string> { "olive oil", "chicken breasts", "onion", "red pepper", "garlic", "chorizo", "Cajun seasoning", "long grain rice", "plum tomato", "chicken stock" };
+            Meals.MealList.Add(new Meals("Chicken & Chorizo Jambalaya", ChickenChorizoJambalayaRecipe, 800, false, true, true, true));
+
+            List<string> GingerbreadMenRecipe = new List<string> { "Muscovado sugar", "golden syrup", "butter", "plain flour", "bicarbonate of soda", "ground ginger", "ground cinnamon", "egg", "icing", "chocolate buttons" };
+            Meals.MealList.Add(new Meals("Gingerbread Men", GingerbreadMenRecipe, 700, false, true, true, true));
+
+            List<string> PepperTomatoHamOmeletteRecipe = new List<string> { "eggs", "egg white", "olive oil", "red pepper", "spring onions", "sliced ham", "mature cheddar", "wholemeal toast", "fresh tomatoes" };
+            Meals.MealList.Add(new Meals("Pepper, Tomato & Ham Omelette", PepperTomatoHamOmeletteRecipe, 400, true, true, true, true));
+
+            List<string> HealthyBeefStewRecipe = new List<string> { "onion", "garlic", "olive oil", "beef stir-fry strips", "yellow pepper", "tomato", "rosemary", "pitted olives" };
+            Meals.MealList.Add(new Meals("Healthy Beef Stew", HealthyBeefStewRecipe, 600, false, true, true, true));
+
+            List<string> ChickenSaladRecipe = new List<string> { "chicken breast", "fish sauce", "lime", "caster sugar", "mixed salad leaves", "coriander", "red onion", "chilli", "cucumber" };
+            Meals.MealList.Add(new Meals("Chicken Salad", ChickenSaladRecipe, 350, false, true, true, true));
+
+            List<string> ChickenParmigianaRecipe = new List<string> { "chicken breasts", "eggs", "breadcrumb", "parmesan", "olive oil", "garlic", "passata", "caster sugar", "dried oregano", "mozzarella" };
+            Meals.MealList.Add(new Meals("Chicken Parmigiana", ChickenParmigianaRecipe, 750, false, true, true, true));
+
+            List<string> ToadInTheHoleRecipe = new List<string> { "chipolatas", "sunflower oil", "plain flour", "egg", "semi-skimmed milk" };
+            Meals.MealList.Add(new Meals("Toad-in-the-hole", ToadInTheHoleRecipe, 400, true, true, true, true));
+
+            List<string> VegTacosRecipe = new List<string> { "red peppers", "olive oil", "fennel bulb", "onion", "carrot", "garlic", "chillies", "fennel seeds", "tomato purée", "tomatoes", "vegetable stock", "caster sugar", "basil", "tortillas" };
+            Meals.MealList.Add(new Meals("Veg Tacos", VegTacosRecipe, 525, true, true, true, true));
+
+            List<string> KidsPastaSaladRecipe = new List<string> { "pasta", "olive oil", "red wine vinegar", "oregano", "cherry tomatoes", "olives", "cucumber", "red onion", "feta cheese"};
+            Meals.MealList.Add(new Meals("Kids' pasta salad", KidsPastaSaladRecipe, 400, false, true, true, true));
+
+            List<string> SausageWhiteBeanCasseroleRecipe = new List<string> { "yellow pepper", "carrots", "red onion", "chipolatas", "cherry tomatoes", "white beans", "chicken stock", "Dijon mustard", "frozen peas", "potatoes" };
+            Meals.MealList.Add(new Meals("Sausage & White Bean Casserole", SausageWhiteBeanCasseroleRecipe, 650, false, true, true, true));
+
+            List<string> TeriyakiSalmonRecipe = new List<string> { "soy sauce", "honey", "garlic", "mirin", "sunflower oil", "Tenderstem broccoli", "salmon fillets", "ginger", "sesame oil", "spring onions", "toasted", "sesame seeds", "rice" };
+            Meals.MealList.Add(new Meals("Teriyaki Salmon", TeriyakiSalmonRecipe, 550, false, true, true, true));
+
+            List<string> VeganChilliRecipe = new List<string> { "olive oil", "sweet potato", "smoked paprika", "ground cumin", "onion", "carrots", "celery sticks", "garlic", "chilli powder", "oregano", "tomato purée", "red pepper", "chopped tomatoes", "black beans", "kidney beans", "lime", "guacamole", "rice", "coriander" };
+            Meals.MealList.Add(new Meals("Vegan Chilli", VeganChilliRecipe, 600, true, true, true, true));
+
             List<string> SpaghettiBologneseRecipe = new List<string> { "minced", "spaghetti", "pasata", "cheese" };
-            Meals.MealList.Add(new Meals("Spaghetti Bolognese", SpaghettiBologneseRecipe, 800, false, true, true));
+            Meals.MealList.Add(new Meals("Spaghetti Bolognese", SpaghettiBologneseRecipe, 800, false, true, true, true));
 
             List<string> CourgettePakorasRecipe = new List<string> { "Courgette", "Chilli", "Flour" };
-            Meals.MealList.Add(new Meals("Courgette Pakoras", CourgettePakorasRecipe, 84, true, true, false));
+            Meals.MealList.Add(new Meals("Courgette Pakoras", CourgettePakorasRecipe, 84, true, true, false, false));
 
             List<string> VeggieWrapRecipe = new List<string> { "Tortilla", "Red Cabbage", "Olives" };
-            Meals.MealList.Add(new Meals("Veggie Wraps", VeggieWrapRecipe, 281, true, true, false));
+            Meals.MealList.Add(new Meals("Veggie Wraps", VeggieWrapRecipe, 281, true, true, false, true));
 
             List<string> SpinnachMushroomPastaRecipe = new List<string> { "Penne Pasta", "Mushroom", "Spinnach" };
-            Meals.MealList.Add(new Meals("Spinach Mushroom Pasta", SpinnachMushroomPastaRecipe, 483, true, true, true));
+            Meals.MealList.Add(new Meals("Spinach Mushroom Pasta", SpinnachMushroomPastaRecipe, 483, true, true, true, false));
 
             List<string> VeganBuritoRecipe = new List<string> { "Tortilla", "Rice", "Black Beans" };
-            Meals.MealList.Add(new Meals("Vegan Burrito", VeganBuritoRecipe, 513, true, true, false));
+            Meals.MealList.Add(new Meals("Vegan Burrito", VeganBuritoRecipe, 513, true, true, false, true));
 
             List<string> CourgetteCurryRecipe = new List<string> { "Rice", "Courgette", "Chickpeas" };
-            Meals.MealList.Add(new Meals("Courgette Curry", CourgetteCurryRecipe, 487, true, false, true));
+            Meals.MealList.Add(new Meals("Courgette Curry", CourgetteCurryRecipe, 487, true, false, true, false));
 
             List<string> CoconutDahlRecipe = new List<string> { "Tomatoes", "Chickpeas", "lentils" };
-            Meals.MealList.Add(new Meals("Coconut Dahl", CoconutDahlRecipe, 338, true, true, true));
+            Meals.MealList.Add(new Meals("Coconut Dahl", CoconutDahlRecipe, 338, true, true, true, true));
 
             List<string> JackfruitBurgerRecipe = new List<string> { "Jackfruit", "Mushroom", "Potato" };
-            Meals.MealList.Add(new Meals("Jackfruit Burger", JackfruitBurgerRecipe, 416, true, true, true));
+            Meals.MealList.Add(new Meals("Jackfruit Burger", JackfruitBurgerRecipe, 416, true, true, true, true));
 
             List<string> FalafelRecipe = new List<string> { "Chickpease ", "Onions", "Broad Beans" };
-            Meals.MealList.Add(new Meals("Falafel", FalafelRecipe, 139, true, true, true));
+            Meals.MealList.Add(new Meals("Falafel", FalafelRecipe, 139, true, true, true, true));
 
             List<string> VeganCarbonaraRecipe = new List<string> { "Spagehett", "Cashew Nuts", "Mushrooms" };
-            Meals.MealList.Add(new Meals("Vegan Carbonara", VeganCarbonaraRecipe, 499, true, true, true));
+            Meals.MealList.Add(new Meals("Vegan Carbonara", VeganCarbonaraRecipe, 499, true, true, true, true));
 
             List<string> CrunchSaladRecipe = new List<string> { "Almonds", "Radishes", "Edamame" };
-            Meals.MealList.Add(new Meals("Crunch Salad", CrunchSaladRecipe, 483, true, true, false));
+            Meals.MealList.Add(new Meals("Crunch Salad", CrunchSaladRecipe, 483, true, true, false, false));
 
             List<string> CouscousRecipe = new List<string> { "Beetroot", "Couscous", "Tomatoes" };
-            Meals.MealList.Add(new Meals("Couscous", CouscousRecipe, 461, true, true, false));
+            Meals.MealList.Add(new Meals("Couscous", CouscousRecipe, 461, true, true, false, false));
 
             List<string> VeganKormaRecipe = new List<string> { "Spring Onions", "Chickpeas", "Almonds" };
-            Meals.MealList.Add(new Meals("Vegan Korma", VeganKormaRecipe, 477, true, true, true));
+            Meals.MealList.Add(new Meals("Vegan Korma", VeganKormaRecipe, 477, true, true, true, true));
 
             List<string> SweetPotatoSoupRecipe = new List<string> { "Sweet Potato", "Vegetable Stock", "Garlic" };
-            Meals.MealList.Add(new Meals("Sweet Potato Soup", SweetPotatoSoupRecipe, 458, true, true, false));
+            Meals.MealList.Add(new Meals("Sweet Potato Soup", SweetPotatoSoupRecipe, 458, true, true, false, true));
 
             List<string> GreenBeanSaladRecipe = new List<string> { "Green Beans", "Garlic", "Mint" };
-            Meals.MealList.Add(new Meals("Green Bean Salad", GreenBeanSaladRecipe, 79, true, true, false));
+            Meals.MealList.Add(new Meals("Green Bean Salad", GreenBeanSaladRecipe, 79, true, true, false, false));
 
             List<string> TomatoBasilSoupRecipe = new List<string> { "tomato", "turkey", "basil", "garlic" };
-            Meals.MealList.Add(new Meals("Tomato & Basil Soup", TomatoBasilSoupRecipe, 213, false, true, true));
+            Meals.MealList.Add(new Meals("Tomato & Basil Soup", TomatoBasilSoupRecipe, 213, false, true, true, false));
 
             List<string> ChickenPastaBakeRecipe = new List<string> { "tomato", "chicken", "mozzarella", "garlic", "oil" };
-            Meals.MealList.Add(new Meals("Chicken Pasta Bake", ChickenPastaBakeRecipe, 575, false, true, true));
+            Meals.MealList.Add(new Meals("Chicken Pasta Bake", ChickenPastaBakeRecipe, 575, false, true, true, true));
 
             List<string> ChickenChorizoRaguRecipe = new List<string> { "tomato", "chicken", "chorizo", "onion", "potatoes" };
-            Meals.MealList.Add(new Meals("Chicken & Chorizo Ragu", ChickenChorizoRaguRecipe, 383, false, true, true));
+            Meals.MealList.Add(new Meals("Chicken & Chorizo Ragu", ChickenChorizoRaguRecipe, 383, false, true, true, true));
 
             List<string> VegetarianLasagneRecipe = new List<string> { "lasagnaSheets", "tomatoes", "basil", "carrot", "onion" };
-            Meals.MealList.Add(new Meals("Vegetarian Lasagne", VegetarianLasagneRecipe, 461, true, true, true));
+            Meals.MealList.Add(new Meals("Vegetarian Lasagne", VegetarianLasagneRecipe, 461, true, true, true, true));
 
             List<string> MeatBallTomatoSoupRecipe = new List<string> { "tomato", "meatballs", "peppers", "onion", "couscous" };
-            Meals.MealList.Add(new Meals("Meat & Ball Tomato Soup", MeatBallTomatoSoupRecipe, 330, false, true, true));
+            Meals.MealList.Add(new Meals("Meat & Ball Tomato Soup", MeatBallTomatoSoupRecipe, 330, false, true, true, true));
 
             List<string> BroccoliPPPastaRecipe = new List<string> { "broccoli", "pasta", "basil", "tomatoes", "garlic" };
-            Meals.MealList.Add(new Meals("Broccoli Pesto & Pancetta Pasta", BroccoliPPPastaRecipe, 452, false, true, true));
+            Meals.MealList.Add(new Meals("Broccoli Pesto & Pancetta Pasta", BroccoliPPPastaRecipe, 452, false, true, true, false));
 
             List<string> HealthyChickenKCRecipe = new List<string> { "chicken", "currry powder", "tumeric", "rice" };
-            Meals.MealList.Add(new Meals("Healthy Chicken Katsu Curry", HealthyChickenKCRecipe, 585, false, true, true));
+            Meals.MealList.Add(new Meals("Healthy Chicken Katsu Curry", HealthyChickenKCRecipe, 585, false, true, true, false));
 
             List<string> SpicedLambWrapsRecipe = new List<string> { "lamb", "tomatoes", "potatoes", "peas" };
-            Meals.MealList.Add(new Meals("Spiced Lamb Wraps", SpicedLambWrapsRecipe, 576, false, true, true));
+            Meals.MealList.Add(new Meals("Spiced Lamb Wraps", SpicedLambWrapsRecipe, 576, false, true, true, true));
 
             List<string> EasyChickenFajitasRecipe = new List<string> { "chicken", "salad", "tortillas", "pepper" };
-            Meals.MealList.Add(new Meals("Easy Chicken Fajitas", EasyChickenFajitasRecipe, 723, false, true, true));
+            Meals.MealList.Add(new Meals("Easy Chicken Fajitas", EasyChickenFajitasRecipe, 723, false, true, true, true));
 
             List<string> ChorizoCPPastaRecipe = new List<string> { "chorizo", "penne", "basil", "pepper" };
-            Meals.MealList.Add(new Meals("Chorizo & Chilli Pepper Pasta", ChorizoCPPastaRecipe, 684, false, true, true));
+            Meals.MealList.Add(new Meals("Chorizo & Chilli Pepper Pasta", ChorizoCPPastaRecipe, 684, false, true, true, true));
 
             List<string> TomatoMascarponeRisottoRecipe = new List<string> { "mascarpone ", "tomatoes", "rice", "basil" };
-            Meals.MealList.Add(new Meals("Tomato & Mascarpone Risotto", TomatoMascarponeRisottoRecipe, 635, false, true, true));
+            Meals.MealList.Add(new Meals("Tomato & Mascarpone Risotto", TomatoMascarponeRisottoRecipe, 635, false, true, true, false));
 
             List<string> PorkNoddleStirFryRecipe = new List<string> { "mince-pork", "egg", "sweetcorn", "carrot" };
-            Meals.MealList.Add(new Meals("Pork Noddle Stir Fry", PorkNoddleStirFryRecipe, 599, false, true, true));
+            Meals.MealList.Add(new Meals("Pork Noddle Stir Fry", PorkNoddleStirFryRecipe, 599, false, true, true, true));
 
             List<string> ChorizoMGBakeRecipe = new List<string> { "Chorizo", "tomatoes", "gnocchi", "mozarella" };
-            Meals.MealList.Add(new Meals("Chorizo & mozzarella gnocchi bake", ChorizoMGBakeRecipe, 318, false, true, true));
+            Meals.MealList.Add(new Meals("Chorizo & mozzarella gnocchi bake", ChorizoMGBakeRecipe, 318, false, true, true, true));
 
             List<string> BreakfastSmoothieRecipe = new List<string> { "banana", "raspberries", "blueberries", "strawberries" };
-            Meals.MealList.Add(new Meals("Breakfast Soothie", BreakfastSmoothieRecipe, 124, true, false, false));
+            Meals.MealList.Add(new Meals("Breakfast Soothie", BreakfastSmoothieRecipe, 124, true, false, false, true));
 
             List<string> BreakfastMuffinsRecipe = new List<string> { "banana", "seeds", "blueberries", "flour" };
-            Meals.MealList.Add(new Meals("Breakfast Muffins", BreakfastMuffinsRecipe, 179, true, false, false));
+            Meals.MealList.Add(new Meals("Breakfast Muffins", BreakfastMuffinsRecipe, 179, true, false, false, true));
             #endregion
         }
 

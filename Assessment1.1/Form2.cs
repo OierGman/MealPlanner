@@ -14,6 +14,7 @@ namespace Assessment1._1
         bool Dinner;
         int Calories;
         bool Vegan;
+        bool KidsMeal;
 
         public Form2()
         {
@@ -23,7 +24,7 @@ namespace Assessment1._1
         private void button1_Click(object sender, EventArgs e)
         {
             Ingredients();
-            Meals.MealList.Add(new Meals(MealName, CoreIngridients, Calories, Vegan, Lunch, Dinner));
+            Meals.MealList.Add(new Meals(MealName, CoreIngridients, Calories, Vegan, Lunch, Dinner, KidsMeal));
             this.Close();
         }
 
@@ -89,6 +90,18 @@ namespace Assessment1._1
         private void Form2_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (KidsMealCheckbox.Checked == true)
+            {
+                KidsMeal = true;
+            }
+            else if(KidsMealCheckbox.Checked == false)
+            {
+                 KidsMeal= false;
+            }
         }
     }
 }

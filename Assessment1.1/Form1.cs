@@ -343,8 +343,8 @@ namespace Assessment1._1
                 int mealLunch = GetLunch();
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    Text = Meals.MealList[mealLunch].name,
-                    TextAlign = ContentAlignment.TopCenter,
+                    Text = Meals.MealList[mealLunch].name + "\n\n\n\n\n\n\n kcal - " + Meals.MealList[mealLunch].calorie.ToString(),
+                    TextAlign = ContentAlignment.MiddleCenter,
                     Dock = DockStyle.Fill,
                     FlatStyle = FlatStyle.Flat,
                     BackColor = Color.Transparent,
@@ -355,8 +355,8 @@ namespace Assessment1._1
 
                 mealTimeTableWeek.Controls.Add(new Button()
                 {
-                    Text = Meals.MealList[mealDinner].name,
-                    TextAlign = ContentAlignment.TopCenter,
+                    Text = Meals.MealList[mealDinner].name + "\n\n\n\n\n\n\n kcal - " + Meals.MealList[mealDinner].calorie.ToString(),
+                    TextAlign = ContentAlignment.MiddleCenter,
                     Dock = DockStyle.Fill,
                     FlatStyle = FlatStyle.Flat,
                     BackColor = Color.Transparent,

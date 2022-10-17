@@ -231,6 +231,51 @@ namespace Assessment1._1
 
             List<string> FishSoupRecipe = new List<string> { "Fish", "Onion", "Carrot" };
             Meals.MealList.Add(new Meals("Fish Soup", FishSoupRecipe, 352, false, true, true, true));
+
+            List<string> OnePotGarlicChickenRecipe = new List<string> { "chicken", "clove", "garlic", "flour" };
+            Meals.MealList.Add(new Meals("one-pot garlic chicken", OnePotGarlicChickenRecipe, 570, false, true, true, false));
+
+            List<string> OnePotChickenCurryRiceRecipe = new List<string> { "chicken", "curry", "garlic", "rice" };
+            Meals.MealList.Add(new Meals("one-pot chicken & curry rice", OnePotChickenCurryRiceRecipe, 485, false, true, true, true));
+
+            List<string> SquashChickenCouscousRecipe = new List<string> { "chicken", "onion", "tomatoes", "lemons" };
+            Meals.MealList.Add(new Meals("squash chicken Couscous", SquashChickenCouscousRecipe, 283, false, true, true,true));
+
+            List<string> PeanutButterChickenRecipe = new List<string> { "chicken", "peanut", "tomatoes", "coriander" };
+            Meals.MealList.Add(new Meals("peanut butter chicken", PeanutButterChickenRecipe, 572, false, true, true,false));
+
+            List<string> DorsetAppleCakeRecipe = new List<string> { "flour", "sugar", "egg", "milk" };
+            Meals.MealList.Add(new Meals("dorset apple cake", DorsetAppleCakeRecipe, 310, true, true, false,true));
+
+            List<string> CauliflowerPaneerPeaCurryRecipe = new List<string> { "cauliflower", "onion", "tikkamasala", "pea" };
+            Meals.MealList.Add(new Meals("cauliflower paneer pea curry", CauliflowerPaneerPeaCurryRecipe, 321, true, true, true,false));
+
+            List<string> blackberryAppleOatBakeRecipe = new List<string> { "blackberries", "apples", "cardamon", "milk" };
+            Meals.MealList.Add(new Meals("blackberry apple oat bake", blackberryAppleOatBakeRecipe, 337, true, true, true,true));
+
+            List<string> PorkAppleBurgersRecipe = new List<string> { "sausagemeat", "buns", "apples", "sweetpotato" };
+            Meals.MealList.Add(new Meals("pork & apple burgers", PorkAppleBurgersRecipe, 364, false, true, false,true));
+
+            List<string> MushroomRicottaRocketTartRecipe = new List<string> { "mushrooms", "nutmeg", "pastry", "garlic" };
+            Meals.MealList.Add(new Meals("mushroom ricotta rocket tarts", MushroomRicottaRocketTartRecipe, 461, true, true, true,false));
+
+            List<string> RoastedAsparagusPancettaCherryTomatoPastaRecipe = new List<string> { "asparagus", "penne", "tomatoes", "basil" };
+            Meals.MealList.Add(new Meals("roasted asparagus, pancetta & cherry tomato pasta", RoastedAsparagusPancettaCherryTomatoPastaRecipe, 520, true, true, true,false));
+
+            List<string> MasalaFrittataAvocadoSalsaRecipe = new List<string> { "tomatoes", "lemon", "eggs", "curry" };
+            Meals.MealList.Add(new Meals("masala frittata with avocado salsa", MasalaFrittataAvocadoSalsaRecipe, 347, true, true, true,false));
+
+            List<string> SmokedHaddockCreamedCornCurryRecipe = new List<string> { "sweetcorn", "haddocks", "rice", "curry" };
+            Meals.MealList.Add(new Meals("smoked haddock & creamed corn curry", SmokedHaddockCreamedCornCurryRecipe, 332, false, true, true,false));
+
+            List<string> SausageRaguRecipe = new List<string> { "sausage", "tomatoes", "pasta", "parmesan" };
+            Meals.MealList.Add(new Meals("sausage ragu", SausageRaguRecipe, 589, false, true, true,false));
+
+            List<string> SpaghettiPuttanescaRecipe = new List<string> { "anchovy", "tomatoes", "spaghetti", "olives" };
+            Meals.MealList.Add(new Meals("spaghetti puttanesca", SpaghettiPuttanescaRecipe, 495, true, true, true, true));
+
+            List<string> RedlentilSquashDhalRecipe = new List<string> { "tumeric", "tomatoes", "nanbread", "lentil" };
+            Meals.MealList.Add(new Meals("red lentil & squash dhal", RedlentilSquashDhalRecipe, 495, false, true, true, true));
             #endregion
         }
 

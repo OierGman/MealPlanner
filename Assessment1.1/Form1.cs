@@ -174,6 +174,63 @@ namespace Assessment1._1
 
             List<string> BreakfastMuffinsRecipe = new List<string> { "banana", "seeds", "blueberries", "flour" };
             Meals.MealList.Add(new Meals("Breakfast Muffins", BreakfastMuffinsRecipe, 179, true, false, false, true));
+
+            List<string> LasagnaRecipe = new List<string> { "Pasta", "Cheese", "Mince" };
+            Meals.MealList.Add(new Meals("Lasagna", LasagnaRecipe, 352, false, false, true, true));
+
+            List<string> RoastDinnerRecipe = new List<string> { "Chicken", "Potatos", "Gravy" };
+            Meals.MealList.Add(new Meals("Roast DInner", RoastDinnerRecipe, 212, false, false, true, true));
+
+            List<string> PizzaRecipe = new List<string> { "Tomato", "Pepperoni", "Cheese" };
+            Meals.MealList.Add(new Meals("Pizza", PizzaRecipe, 567, false, true, true, true));
+
+            List<string> LambCurryRecipe = new List<string> { "Lamb", "Chilli", "Rice" };
+            Meals.MealList.Add(new Meals("Lamb Curry", LambCurryRecipe, 352, false, false, true, false));
+
+            List<string> ChickenPastaRecipe = new List<string> { "Chickn", "Bacon", "Pasta" };
+            Meals.MealList.Add(new Meals("Chicken And Bacon Pasta", ChickenPastaRecipe, 257, false, true, true, true));
+
+            List<string> ChickenCeaserSalad = new List<string> { "Chicken", "Croutons", "Salad" };
+            Meals.MealList.Add(new Meals("Chicken Ceaser Salad", ChickenCeaserSalad, 352, false, true, false, true));
+
+            List<string> ChickenAndChipsRecipe = new List<string> { "Chicken", "Chips", "Veg" };
+            Meals.MealList.Add(new Meals("Chicken And Chips", ChickenAndChipsRecipe, 498, false, false, true, true));
+
+            List<string> SteakAndChips = new List<string> { "Steak", "Chips", "Mushroom" };
+            Meals.MealList.Add(new Meals("Steak And Chips", SteakAndChips, 290, false, false, true, true));
+
+            List<string> KebabRecipe = new List<string> { "Lamb", "Pepper", "Pitta" };
+            Meals.MealList.Add(new Meals("Kebab", KebabRecipe, 480, false, true, true, false));
+
+            List<string> TomatoSoupRecipe = new List<string> { "Tomato", "Onion", "Bread" };
+            Meals.MealList.Add(new Meals("Tomato Soup", TomatoSoupRecipe, 450, false, true, false, true));
+
+            List<string> SausageAndMashRecipe = new List<string> { "Sausage", "Mash", "Gravy" };
+            Meals.MealList.Add(new Meals("Sausage And Mash", SausageAndMashRecipe, 700, false, false, true, true));
+
+            List<string> PorkChopAndMashRecipe = new List<string> { "Pork Chop", "Mash", "Veg" };
+            Meals.MealList.Add(new Meals("Pork Chop And Mash", PorkChopAndMashRecipe, 385, false, false, true, true));
+
+            List<string> PieAndChipsRecipe = new List<string> { "Pie", "Chips", "Veg" };
+            Meals.MealList.Add(new Meals("Pie And Chips", PieAndChipsRecipe, 725, false, false, true, true));
+
+            List<string> FishAndChipsRecipe = new List<string> { "Fish", "Chips", "Lemon" };
+            Meals.MealList.Add(new Meals("Fish And Chips", FishAndChipsRecipe, 659, false, false, true, true));
+
+            List<string> LambCaserolleRecipe = new List<string> { "Lamb", "Onion", "Potato" };
+            Meals.MealList.Add(new Meals("Lamb Caserolle", LambCaserolleRecipe, 378, false, false, true, false));
+
+            List<string> ChickenBLTRecipe = new List<string> { "Chiken", "Bacon", "Tomato" };
+            Meals.MealList.Add(new Meals("Chicken BLT", ChickenBLTRecipe, 217, false, true, false, true));
+
+            List<string> HoumousRecipe = new List<string> { "Chickpeas", "Carrots", "Pitta" };
+            Meals.MealList.Add(new Meals("Houmous", HoumousRecipe, 178, false, true, false, true));
+
+            List<string> ChickenArrabiataRecipe = new List<string> { "Chicken", "Pasta", "Chilli" };
+            Meals.MealList.Add(new Meals("Chicken Arrabiat", ChickenArrabiataRecipe, 367, false, false, true, false));
+
+            List<string> FishSoupRecipe = new List<string> { "Fish", "Onion", "Carrot" };
+            Meals.MealList.Add(new Meals("Fish Soup", FishSoupRecipe, 352, false, true, true, true));
             #endregion
         }
 
